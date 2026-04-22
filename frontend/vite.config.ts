@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { viteSingleFile } from 'vite-plugin-singlefile';
+
+const isSingleFile = process.env.SINGLE_FILE === '1';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: isSingleFile ? [react(), viteSingleFile()] : [react()],
   server: {
     port: 5173,
     proxy: {
@@ -12,4 +15,14 @@ export default defineConfig({
       },
     },
   },
+  build: isSingleFile
+    ? {
+        target: 'esnext',
+        assetsInlineLimit: 100_000_000,
+        cssCodeSplit: false,
+        rollupOptions: {
+          output: { inlineDynamicImports: true },
+        },
+      }
+    : {},
 });

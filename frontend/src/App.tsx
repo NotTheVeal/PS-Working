@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import LoginForm from './components/LoginForm';
 import Header from './components/Header';
 import ChatInterface from './components/ChatInterface';
-import { api } from './api/client';
+import { api, demo } from './api/client';
+
+// When built as a standalone file (SINGLE_FILE=1), auto-start in demo mode.
+if (import.meta.env.VITE_DEMO_ONLY === 'true') {
+  demo.enable();
+}
 
 export default function App() {
   const [username, setUsername] = useState<string | null>(null);
