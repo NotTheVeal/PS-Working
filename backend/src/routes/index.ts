@@ -57,4 +57,26 @@ router.post('/chat', async (req: Request, res: Response) => {
   res.end();
 });
 
+// ── Email download ────────────────────────────────────────────────────────────
+
+router.post('/email/download', (req: Request, res: Response) => {
+  const { subject, body } = req.body as { subject?: string; body?: string };
+  if (!body) return res.status(400).json({ error: 'body is required' });
+
+  const safeSubject = (subject ?? 'Backorder Alert').replace(/[^a-zA-Z0-9 _-]/g, '').trim();
+  const filename = `${safeSubject.replace(/\s+/g, '_')}.eml`;
+
+  const emlContent = [
+    `MIME-Version: 1.0`,
+    `Content-Type: text/plain; charset="UTF-8"`,
+    `Subject: ${subject ?? 'Backorder Alert'}`,
+    ``,
+    body,
+  ].join('\r\n');
+
+  res.setHeader('Content-Type', 'message/rfc822');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.send(emlContent);
+});
+
 export default router;

@@ -36,6 +36,35 @@ export interface AutomationResult<T = unknown> {
   error?: string;
 }
 
+export interface VendorAlternative {
+  vendor: string;
+  vendorLogo: string;
+  partNumber: string;
+  description: string;
+  manufacturer: string;
+  price: string;
+  availability: string;
+  inStock: boolean;
+  url: string;
+  imageUrl?: string;
+}
+
+export interface BackorderAlert {
+  part: Part;
+  riskScore: number;
+  riskReason: string;
+  isBackordered: boolean;
+  alternatives: VendorAlternative[];
+}
+
+export interface EmailDraft {
+  to: string;
+  subject: string;
+  body: string;
+  backordered: Part[];
+  alternatives: VendorAlternative[];
+}
+
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
