@@ -1,5 +1,5 @@
 import React from 'react';
-import { api } from '../api/client';
+import { api, demo } from '../api/client';
 
 interface Props {
   username: string;
@@ -18,6 +18,7 @@ export default function Header({ username, onLogout }: Props) {
         <span style={styles.icon}>⚙️</span>
         <span style={styles.title}>PartsSource AI</span>
         <span style={styles.badge}>BETA</span>
+        {demo.isActive() && <span style={styles.demoBadge}>DEMO</span>}
       </div>
       <div style={styles.right}>
         <span style={styles.user}>
@@ -69,6 +70,16 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '50%',
     background: 'var(--success)',
     display: 'inline-block',
+  },
+  demoBadge: {
+    padding: '2px 7px',
+    background: 'rgba(124,58,237,0.25)',
+    color: '#a78bfa',
+    borderRadius: 4,
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: '0.05em',
+    border: '1px solid rgba(124,58,237,0.35)',
   },
   logoutBtn: {
     padding: '5px 12px',

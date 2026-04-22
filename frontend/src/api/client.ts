@@ -1,6 +1,14 @@
 import type { ChatMessage, SSEEvent } from '../types';
+import { mockChatStream } from './mockClient';
 
 const BASE = '/api';
+const DEMO_KEY = 'ps-demo-mode';
+
+export const demo = {
+  isActive: () => sessionStorage.getItem(DEMO_KEY) === 'true',
+  enable: () => sessionStorage.setItem(DEMO_KEY, 'true'),
+  disable: () => sessionStorage.removeItem(DEMO_KEY),
+};
 
 async function fetchJSON<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
@@ -14,23 +22,40 @@ async function fetchJSON<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  login: (username: string, password: string) =>
-    fetchJSON<{ success: boolean; username: string }>('/auth/login', {
+  login: (username: string, password: string) => {
+    if (demo.isActive()) {
+      return Promise.resolve({ success: true, username: username || 'Earl G.' });
+    }
+    return fetchJSON<{ success: boolean; username: string }>('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
-    }),
+    });
+  },
 
-  logout: () =>
-    fetchJSON<{ success: boolean }>('/auth/logout', { method: 'POST' }),
+  logout: () => {
+    demo.disable();
+    if (demo.isActive()) return Promise.resolve({ success: true });
+    return fetchJSON<{ success: boolean }>('/auth/logout', { method: 'POST' });
+  },
 
-  authStatus: () =>
-    fetchJSON<{ loggedIn: boolean; username: string | null }>('/auth/status'),
+  authStatus: () => {
+    if (demo.isActive()) {
+      return Promise.resolve({ loggedIn: true, username: 'Earl G.' });
+    }
+    return fetchJSON<{ loggedIn: boolean; username: string | null }>('/auth/status').catch(
+      () => ({ loggedIn: false, username: null }),
+    );
+  },
 
   chatStream: (
     message: string,
     history: ChatMessage[],
     onEvent: (e: SSEEvent) => void,
   ): Promise<void> => {
+    if (demo.isActive()) {
+      return mockChatStream(message, history, onEvent);
+    }
+
     return new Promise((resolve, reject) => {
       fetch(`${BASE}/chat`, {
         method: 'POST',
@@ -38,10 +63,7 @@ export const api = {
         credentials: 'include',
         body: JSON.stringify({ message, history }),
       }).then((res) => {
-        if (!res.ok || !res.body) {
-          reject(new Error(`HTTP ${res.status}`));
-          return;
-        }
+        if (!res.ok || !res.body) { reject(new Error(`HTTP ${res.status}`)); return; }
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let buffer = '';
