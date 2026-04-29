@@ -1,0 +1,231 @@
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+  .wrap{background:#f9f9f8;padding:20px;border-radius:12px}
+  .step{background:#fff;border:1px solid #e0ddd6;border-radius:10px;margin-bottom:12px;overflow:hidden}
+  .step-head{padding:12px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;background:#fff}
+  .step-head:hover{background:#f5f4f0}
+  .step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;background:#e8f0fe;color:#1a56b0}
+  .step-num.done{background:#d4edda;color:#1a6b3a}
+  .step-title{font-size:14px;font-weight:600;color:#1a1a1a;flex:1}
+  .step-sub{font-size:11px;color:#6b6b6b;margin-top:1px}
+  .step-body{padding:0 16px 16px;border-top:1px solid #e0ddd6;background:#fff}
+  .step-body.hidden{display:none}
+  .label{font-size:11px;font-weight:600;color:#4a4a4a;margin:14px 0 6px;display:block;text-transform:uppercase;letter-spacing:.04em}
+  .hint{font-size:12px;color:#6b6b6b;margin-top:6px;line-height:1.55}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px}
+  .chip{padding:5px 11px;border-radius:100px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid #d0cdc5;color:#4a4a4a;background:#fff;transition:all .12s}
+  .chip:hover{border-color:#1a56b0;color:#1a56b0;background:#e8f0fe}
+  .chip.on{border-color:#1a56b0;color:#1a56b0;background:#e8f0fe}
+  input[type=text]{width:100%;font-size:13px;padding:8px 10px;border-radius:8px;border:1px solid #d0cdc5;background:#fff;color:#1a1a1a;margin-top:4px}
+  input[type=text]:focus{outline:none;border-color:#1a56b0}
+  .next-btn{margin-top:14px;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#1a56b0;color:#fff;border:none}
+  .next-btn:hover{background:#1446a0}
+  .output-box{background:#0d1117;border-radius:8px;padding:14px;font-family:'SFMono-Regular',Consolas,monospace;font-size:11.5px;line-height:1.7;color:#aff5b4;white-space:pre-wrap;margin-top:12px;border:1px solid #30363d}
+  .copy-btn{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid #d0cdc5;background:#f5f4f0;color:#1a1a1a}
+  .copy-btn:hover{background:#e8e7e2}
+  .copy-btn.primary{background:#1a56b0;color:#fff;border-color:#1a56b0}
+  .copy-btn.primary:hover{background:#1446a0}
+  .progress{display:flex;gap:6px;margin-bottom:20px;align-items:center}
+  .pdot{width:8px;height:8px;border-radius:50%;background:#d0cdc5}
+  .pdot.active{background:#1a56b0}
+  .pdot.done{background:#1a6b3a}
+  .where-box{background:#f5f4f0;border-radius:8px;padding:12px 14px;margin-top:10px;font-size:13px;line-height:1.6;color:#4a4a4a;border:1px solid #e0ddd6}
+  .path-row{display:flex;align-items:center;gap:8px;margin-top:8px;background:#fff;border:1px solid #e0ddd6;border-radius:8px;padding:8px 12px;font-family:monospace;font-size:12px;color:#1a1a1a}
+  .chevron{color:#9a9a9a;font-size:11px;transition:transform .15s}
+  .chevron.open{transform:rotate(90deg)}
+  code{background:#f0ede8;padding:1px 5px;border-radius:4px;font-family:monospace;font-size:11px;color:#c0392b}
+</style>
+
+<div class="wrap">
+  <div style="font-size:20px;font-weight:700;color:#1a1a1a;margin-bottom:4px">Create your CLAUDE.md</div>
+  <div style="font-size:13px;color:#6b6b6b;line-height:1.6;margin-bottom:16px">This file is how you talk to Claude before every conversation. Think of it as a permanent instruction manual — Claude reads it automatically every time it opens your repo.</div>
+
+  <div class="progress">
+    <div class="pdot active" id="pd0"></div>
+    <div class="pdot" id="pd1"></div>
+    <div class="pdot" id="pd2"></div>
+    <div class="pdot" id="pd3"></div>
+    <span style="font-size:12px;color:#6b6b6b;margin-left:6px" id="prog-label">Step 1 of 4</span>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step" id="s0">
+    <div class="step-head" onclick="toggle(0)">
+      <div class="step-num" id="sn0">1</div>
+      <div style="flex:1"><div class="step-title">Where does CLAUDE.md live?</div><div class="step-sub">You only do this once — ever</div></div>
+      <span class="chevron open" id="ch0">&#9658;</span>
+    </div>
+    <div class="step-body" id="sb0">
+      <div class="where-box">
+        <strong style="color:#1a1a1a">It goes in the root of your GitHub repo.</strong> That means the very top level — the same folder where you see files like <code>README.md</code> and <code>package.json</code>.
+        <div class="path-row">
+          <span style="color:#9a9a9a">PS-Design-Library/</span>
+          <span style="color:#9a9a9a">&#9654;</span>
+          <span style="font-weight:600;color:#1a6b3a">CLAUDE.md</span>
+          <span style="margin-left:auto;font-size:11px;color:#1a6b3a">&#10003; right here</span>
+        </div>
+      </div>
+      <div class="hint" style="margin-top:10px">To create it: open your repo in GitHub, click <strong style="color:#1a1a1a">Add file → Create new file</strong>, name it exactly <strong style="color:#1a1a1a">CLAUDE.md</strong> (capital letters matter), then paste the content you'll generate in the steps below.</div>
+      <button class="next-btn" onclick="advance(0)">Got it — next &#8594;</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step" id="s1">
+    <div class="step-head" onclick="toggle(1)">
+      <div class="step-num" id="sn1">2</div>
+      <div style="flex:1"><div class="step-title">Tech stack</div><div class="step-sub">Tell Claude what tools you use</div></div>
+      <span class="chevron" id="ch1">&#9658;</span>
+    </div>
+    <div class="step-body hidden" id="sb1">
+      <span class="label">Select everything that applies</span>
+      <div class="chips" id="stack-chips">
+        <div class="chip on" data-val="React">React</div>
+        <div class="chip on" data-val="TypeScript">TypeScript</div>
+        <div class="chip on" data-val="Tailwind CSS">Tailwind CSS</div>
+        <div class="chip on" data-val="Token Studio">Token Studio</div>
+        <div class="chip on" data-val="Storybook">Storybook</div>
+        <div class="chip" data-val="Vite">Vite</div>
+        <div class="chip" data-val="Next.js">Next.js</div>
+        <div class="chip" data-val="Vitest">Vitest</div>
+        <div class="chip" data-val="Jest">Jest</div>
+        <div class="chip" data-val="ESLint">ESLint</div>
+        <div class="chip" data-val="Prettier">Prettier</div>
+        <div class="chip" data-val="Figma">Figma</div>
+        <div class="chip" data-val="Bloomreach">Bloomreach</div>
+      </div>
+      <span class="label">Anything else? (optional)</span>
+      <input type="text" id="extra-stack" placeholder="e.g. Framer Motion, Radix UI, shadcn/ui" />
+      <button class="next-btn" onclick="advance(1)">Next &#8594;</button>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step" id="s2">
+    <div class="step-head" onclick="toggle(2)">
+      <div class="step-num" id="sn2">3</div>
+      <div style="flex:1"><div class="step-title">Rules</div><div class="step-sub">Hard limits Claude must never break</div></div>
+      <span class="chevron" id="ch2">&#9658;</span>
+    </div>
+    <div class="step-body hidden" id="sb2">
+      <span class="label">Select your non-negotiables</span>
+      <div class="chips" id="rule-chips">
+        <div class="chip on" data-val="Always use design tokens — never hardcode colours or spacing values">Tokens only — no hardcoded values</div>
+        <div class="chip on" data-val="Every component must include ARIA roles, labels, and keyboard navigation">Accessibility on every component</div>
+        <div class="chip on" data-val="Always generate a Storybook story covering all states and variants">Storybook story required</div>
+        <div class="chip on" data-val="Always generate unit tests using Testing Library">Unit tests required</div>
+        <div class="chip on" data-val="Use React.forwardRef for all components">Use forwardRef on all components</div>
+        <div class="chip on" data-val="Use class-variance-authority (cva) for variant logic — no inline conditionals">Use cva for variants</div>
+        <div class="chip" data-val="Never install new packages without approval">No new packages without approval</div>
+        <div class="chip" data-val="Never modify tailwind.config.js">Don't touch tailwind.config</div>
+        <div class="chip" data-val="All components must be fully typed — no 'any' types">No TypeScript 'any' types</div>
+        <div class="chip" data-val="Keep components small — one responsibility per file">One responsibility per component</div>
+      </div>
+      <span class="label">Any other rules? (optional)</span>
+      <input type="text" id="extra-rules" placeholder="e.g. Always use named exports" />
+      <button class="next-btn" onclick="advance(2)">Next &#8594;</button>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step" id="s3">
+    <div class="step-head" onclick="toggle(3)">
+      <div class="step-num" id="sn3">4</div>
+      <div style="flex:1"><div class="step-title">Expectations</div><div class="step-sub">How Claude should behave and communicate</div></div>
+      <span class="chevron" id="ch3">&#9658;</span>
+    </div>
+    <div class="step-body hidden" id="sb3">
+      <span class="label">Select your expectations</span>
+      <div class="chips" id="exp-chips">
+        <div class="chip on" data-val="Always explain what you are building before writing any code">Explain before coding</div>
+        <div class="chip on" data-val="Ask one clarifying question if anything is unclear before proceeding">Ask if unclear</div>
+        <div class="chip on" data-val="Generate the full file — never use placeholders like '// rest of code here'">Full files only — no placeholders</div>
+        <div class="chip on" data-val="After generating, summarise what was created and why">Summarise decisions after generating</div>
+        <div class="chip" data-val="Suggest missing states or edge cases I may not have thought of">Suggest missing states</div>
+        <div class="chip" data-val="Add JSDoc comments to all exported functions and components">Add JSDoc comments</div>
+        <div class="chip" data-val="Favour simplicity over cleverness">Favour simplicity</div>
+        <div class="chip" data-val="Flag any accessibility issues proactively, even if not asked">Flag a11y issues proactively</div>
+        <div class="chip" data-val="Include a Bloomreach analytics placeholder in every component">Include Bloomreach placeholders</div>
+      </div>
+      <span class="label">Anything specific to your team? (optional)</span>
+      <input type="text" id="extra-exp" placeholder="e.g. Always follow PS Design Library naming conventions" />
+      <button class="next-btn" onclick="generate()">Generate my CLAUDE.md &#8594;</button>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div id="output-section" style="display:none;margin-top:8px">
+    <div style="border-top:1px solid #e0ddd6;margin:12px 0"></div>
+    <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:4px">Your CLAUDE.md is ready</div>
+    <div style="font-size:13px;color:#6b6b6b;margin-bottom:10px">Copy this, then in GitHub click <strong style="color:#1a1a1a">Add file → Create new file</strong>, name it <code>CLAUDE.md</code> and paste.</div>
+    <div class="output-box" id="output"></div>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <button class="copy-btn primary" onclick="copyOutput()">Copy to clipboard</button>
+      <button class="copy-btn" onclick="location.reload()">Start over</button>
+    </div>
+    <div id="copy-confirm" style="display:none;font-size:12px;color:#1a6b3a;margin-top:8px;font-weight:500">Copied to clipboard!</div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.chip').forEach(c => {
+  c.addEventListener('click', () => c.classList.toggle('on'));
+});
+
+function toggle(i) {
+  const body = document.getElementById('sb'+i);
+  const ch = document.getElementById('ch'+i);
+  const hidden = body.classList.contains('hidden');
+  body.classList.toggle('hidden', !hidden);
+  ch.classList.toggle('open', hidden);
+}
+
+function advance(i) {
+  const sn = document.getElementById('sn'+i);
+  sn.classList.add('done');
+  sn.innerHTML = '&#10003;';
+  document.getElementById('pd'+i).classList.remove('active');
+  document.getElementById('pd'+i).classList.add('done');
+  document.getElementById('sb'+i).classList.add('hidden');
+  document.getElementById('ch'+i).classList.remove('open');
+  const next = i + 1;
+  if (next <= 3) {
+    document.getElementById('sb'+next).classList.remove('hidden');
+    document.getElementById('ch'+next).classList.add('open');
+    document.getElementById('pd'+next).classList.add('active');
+    document.getElementById('prog-label').textContent = 'Step ' + (next+1) + ' of 4';
+  }
+}
+
+function getSelected(id) {
+  return Array.from(document.querySelectorAll('#'+id+' .chip.on')).map(c => c.dataset.val);
+}
+
+function generate() {
+  advance(3);
+  const stack = getSelected('stack-chips');
+  const ex1 = document.getElementById('extra-stack').value.trim();
+  if (ex1) ex1.split(',').map(s=>s.trim()).filter(Boolean).forEach(s=>stack.push(s));
+  const rules = getSelected('rule-chips');
+  const ex2 = document.getElementById('extra-rules').value.trim();
+  if (ex2) ex2.split(',').map(s=>s.trim()).filter(Boolean).forEach(s=>rules.push(s));
+  const exps = getSelected('exp-chips');
+  const ex3 = document.getElementById('extra-exp').value.trim();
+  if (ex3) ex3.split(',').map(s=>s.trim()).filter(Boolean).forEach(s=>exps.push(s));
+
+  const md = `# CLAUDE.md — PS Design Library\n\nThis file tells Claude how to work in this repository.\nRead this before doing anything else.\n\n---\n\n## Tech stack\n\n${stack.map(s=>'- '+s).join('\n')}\n\n---\n\n## Rules\n\nThese are hard limits. Never break them, even if asked.\n\n${rules.map((r,i)=>(i+1)+'. '+r).join('\n')}\n\n---\n\n## Expectations\n\n${exps.map((e,i)=>(i+1)+'. '+e).join('\n')}\n\n---\n\n## Component checklist\n\nEvery component must include ALL of the following:\n\n- [ ] Component file: src/components/{Name}/{Name}.tsx\n- [ ] Storybook story: src/components/{Name}/{Name}.stories.tsx\n- [ ] Unit tests: src/components/{Name}/{Name}.test.tsx\n- [ ] TypeScript interface exported from the component file\n- [ ] All variants and states covered\n- [ ] ARIA roles and labels on interactive elements\n- [ ] Design token classes only — no hardcoded values\n- [ ] forwardRef applied so refs work correctly\n\n---\n\n## Prompt template\n\nWhen I ask you to build a component, use this format:\n\nGenerate a React component using:\n- Tailwind CSS with Token Studio tokens\n- TypeScript with full types (no any)\n- All states: default, hover, focus, disabled, loading, error\n- Accessibility: ARIA roles, aria-label, keyboard nav\n- Storybook story with autodocs and all variants\n- Unit tests with Testing Library\n- class-variance-authority (cva) for variants`;
+
+  document.getElementById('output').textContent = md;
+  document.getElementById('output-section').style.display = 'block';
+  document.getElementById('prog-label').textContent = 'Complete!';
+}
+
+function copyOutput() {
+  navigator.clipboard.writeText(document.getElementById('output').textContent).then(() => {
+    const c = document.getElementById('copy-confirm');
+    c.style.display = 'block';
+    setTimeout(()=>c.style.display='none', 2500);
+  });
+}
+</script>
