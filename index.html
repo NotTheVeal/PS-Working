@@ -151,6 +151,34 @@
 
   .footer{border-top:1px solid #e0ddd6;padding:24px;text-align:center;font-size:12px;color:#aaa;background:#fff}
   .footer a{color:#1a56b0;text-decoration:none}
+
+  /* Filter page */
+  .state-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px}
+  @media(max-width:520px){.state-grid{grid-template-columns:1fr}}
+  .state-card{background:#fff;border:1px solid #e0ddd6;border-radius:10px;overflow:hidden}
+  .state-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:7px 12px;background:#f5f4f0;border-bottom:1px solid #e0ddd6;color:#4a4a4a}
+  .filter-mock{padding:12px;background:#2b2b2b;min-height:72px;display:flex;flex-direction:column;gap:8px}
+  .filter-bar{background:#fafafa;border:1px solid #dcdcdc;border-radius:8px;display:flex;align-items:center;overflow:hidden;height:40px}
+  .filter-icon-btn{width:42px;height:40px;border-right:1px solid #ccc;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:#555}
+  .filter-select{flex:1;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:14px;color:#5c5c5c;border-right:1px solid #ccc;min-width:160px;max-width:210px}
+  .filter-select.active{border-color:#005ba6;color:#005ba6;box-shadow:0 0 0 2px rgba(0,156,244,.2)}
+  .filter-input{flex:1;height:40px;background:#fff;border:none}
+  .filter-status{font-size:12px;font-style:italic;color:#949494;padding:2px 4px}
+  .chip-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:2px 4px}
+  .filter-chip{background:#d0edfc;border-radius:11px;padding:2px 10px;font-size:13px;color:#4a4a4a;display:inline-flex;align-items:center;gap:4px}
+  .filter-chip strong{font-weight:600}
+  .chip-action{font-size:12px;color:#5c5c5c;cursor:pointer}
+  .dropdown-mock{background:#fff;border:1px solid #f1f1f1;border-radius:2px;box-shadow:0 4px 4px rgba(0,0,0,.25);padding:8px 0;font-size:13px;color:#1a1a1a;margin-top:-4px;margin-left:2px;width:180px}
+  .dropdown-mock div{padding:4px 16px;line-height:1.7}
+  .dropdown-mock div.hl{background:rgba(208,237,252,.65)}
+  .dropdown-label{font-size:11px;font-weight:700;color:#005ba6;padding:4px 16px 0}
+  .tok-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+  .tok-table th{text-align:left;padding:6px 10px;background:#f5f4f0;color:#4a4a4a;font-weight:600;border-bottom:1px solid #e0ddd6;font-size:11px}
+  .tok-table td{padding:6px 10px;border-bottom:1px solid #f0ede8;vertical-align:top;line-height:1.5}
+  .tok-table tr:last-child td{border-bottom:none}
+  .tok-path{font-family:monospace;font-size:11px;color:#1a56b0;background:#e8f0fe;padding:1px 5px;border-radius:4px}
+  .tok-val{font-family:monospace;font-size:11px;color:#c0392b;background:#fdf2f2;padding:1px 5px;border-radius:4px}
+  .swatch{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.1);vertical-align:middle;margin-right:4px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -178,6 +206,11 @@
       <div class="step-tab-num">2</div>
       <span class="step-tab-title">Prompt Template</span>
       <span class="step-tab-sub">What to type into Claude</span>
+    </div>
+    <div class="step-tab" id="tab3" onclick="switchStep(3)">
+      <div class="step-tab-num">3</div>
+      <span class="step-tab-title">Filter Component</span>
+      <span class="step-tab-sub">Tokens, states &amp; prompt</span>
     </div>
   </div>
 </div>
@@ -499,6 +532,253 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════
+     PAGE 3 — FILTER COMPONENT
+════════════════════════════════════════════ -->
+<div id="page3" class="page">
+  <div class="hero">
+    <div class="hero-eyebrow">Step 3 of the Claude Setup Guide</div>
+    <div class="hero-title">The <span>Filter</span> Component</div>
+    <div class="hero-sub">All four states from the PS Design System, component-level Token Studio tokens, and a ready-to-paste Claude prompt.</div>
+  </div>
+
+  <div class="main">
+
+    <!-- States -->
+    <div class="slabel">Component states (from Figma)</div>
+    <div class="state-grid">
+
+      <div class="state-card">
+        <div class="state-label">1 — Null State</div>
+        <div class="filter-mock">
+          <div class="filter-bar">
+            <div class="filter-icon-btn">&#8801;</div>
+            <div class="filter-select">Add a Filter <span>&#8964;</span></div>
+            <div class="filter-input"></div>
+          </div>
+          <div class="filter-status">No Filters applied</div>
+        </div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-label">2 — Filter + Chip</div>
+        <div class="filter-mock">
+          <div class="filter-bar">
+            <div class="filter-icon-btn">&#8801;</div>
+            <div class="filter-select">Add a Filter <span>&#8964;</span></div>
+            <div class="filter-input"></div>
+          </div>
+          <div class="chip-row">
+            <div class="filter-chip"><strong>Facility:</strong> Hospital A <span style="font-size:14px;color:#666;margin-left:2px">&#10005;</span></div>
+            <span class="chip-action">Clear all</span>
+            <span class="chip-action">Save Filter Set</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-label">3 — Dropdown Open</div>
+        <div class="filter-mock">
+          <div class="filter-bar">
+            <div class="filter-icon-btn">&#8801;</div>
+            <div class="filter-select active" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;padding:6px 12px">
+              <span style="font-size:11px;font-weight:700;color:#005ba6">Add a Filter</span>
+              <span style="font-size:14px;color:#4a4a4a">Facility</span>
+            </div>
+            <div class="filter-input"></div>
+          </div>
+          <div class="dropdown-mock" style="margin-left:42px">
+            <div>Account</div><div>Asset ID</div><div>Checked In</div>
+            <div>Cost Center</div><div>Description</div>
+            <div class="hl">Facility</div>
+            <div>Invoice #</div><div>Item #</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-label">4 — Saved Filter Selected</div>
+        <div class="filter-mock">
+          <div class="filter-bar">
+            <div class="filter-icon-btn" style="border:1px solid #005ba6;color:#005ba6;box-shadow:0 0 0 2px rgba(0,156,244,.2)">&#8801;</div>
+            <div class="filter-select">Add a Filter <span>&#8964;</span></div>
+            <div class="filter-input"></div>
+          </div>
+          <div class="chip-row">
+            <div class="filter-chip"><strong>Facility:</strong> Hospital A <span style="font-size:14px;color:#666;margin-left:2px">&#10005;</span></div>
+            <span class="chip-action">Clear all</span>
+            <span class="chip-action">Save Filter Set</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Token Studio tokens -->
+    <div class="slabel">Component-level Token Studio tokens</div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon" style="background:#e8f0fe">&#123;&#125;</div>
+        <div>
+          <div class="card-title">filter-tokens.json — plug into Token Studio</div>
+          <div class="card-sub">Load this as a token set named <code>component/filter</code> in Token Studio. It references the <code>global</code> set so both sets must be active.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="divider"></div>
+
+        <div style="font-size:11px;font-weight:600;color:#4a4a4a;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Bar</div>
+        <table class="tok-table">
+          <thead><tr><th>Token path</th><th>Value / alias</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tok-path">filter.bar.bg</span></td><td><span class="swatch" style="background:#fafafa"></span><span class="tok-val">{global.color.grey-7}</span></td><td>#FAFAFA — sticky header background</td></tr>
+            <tr><td><span class="tok-path">filter.bar.border</span></td><td><span class="swatch" style="background:#dcdcdc"></span><span class="tok-val">{global.color.grey-5}</span></td><td>#DCDCDC — bar outline</td></tr>
+            <tr><td><span class="tok-path">filter.bar.radius</span></td><td><span class="tok-val">{global.borderRadius.md}</span></td><td>8px</td></tr>
+            <tr><td><span class="tok-path">filter.bar.padding-x</span></td><td><span class="tok-val">{global.spacing.sm}</span></td><td>10px</td></tr>
+            <tr><td><span class="tok-path">filter.bar.padding-y</span></td><td><span class="tok-val">14</span></td><td>px — not in global scale</td></tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:11px;font-weight:600;color:#4a4a4a;text-transform:uppercase;letter-spacing:.04em;margin:14px 0 8px">Field (split dropdown)</div>
+        <table class="tok-table">
+          <thead><tr><th>Token path</th><th>Value / alias</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tok-path">filter.field.bg</span></td><td><span class="swatch" style="background:#fff;border:1px solid #ccc"></span><span class="tok-val">{global.color.white}</span></td><td></td></tr>
+            <tr><td><span class="tok-path">filter.field.border-default</span></td><td><span class="swatch" style="background:#ccc"></span><span class="tok-val">{global.color.grey-4}</span></td><td>#CCCCCC</td></tr>
+            <tr><td><span class="tok-path">filter.field.border-active</span></td><td><span class="swatch" style="background:#005ba6"></span><span class="tok-val">{global.color.ps-blue}</span></td><td>#005BA6 — selected state</td></tr>
+            <tr><td><span class="tok-path">filter.field.shadow-active</span></td><td><span class="tok-val">{global.shadow.focus-ring}</span></td><td>0 0 2px rgba(0,156,244,.41)</td></tr>
+            <tr><td><span class="tok-path">filter.field.text-color</span></td><td><span class="swatch" style="background:#5c5c5c"></span><span class="tok-val">{global.color.grey-2}</span></td><td>#5C5C5C (text/secondary)</td></tr>
+            <tr><td><span class="tok-path">filter.field.font-size</span></td><td><span class="tok-val">{global.typography.font-size-base}</span></td><td>16px</td></tr>
+            <tr><td><span class="tok-path">filter.field.letter-spacing</span></td><td><span class="tok-val">{global.typography.letter-spacing-field}</span></td><td>−0.16px</td></tr>
+            <tr><td><span class="tok-path">filter.field.height</span></td><td><span class="tok-val">40</span></td><td>px — fixed field height</td></tr>
+            <tr><td><span class="tok-path">filter.field.icon-width</span></td><td><span class="tok-val">42</span></td><td>px — icon trigger segment width</td></tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:11px;font-weight:600;color:#4a4a4a;text-transform:uppercase;letter-spacing:.04em;margin:14px 0 8px">Chip</div>
+        <table class="tok-table">
+          <thead><tr><th>Token path</th><th>Value / alias</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tok-path">filter.chip.bg</span></td><td><span class="swatch" style="background:#d0edfc"></span><span class="tok-val">{global.color.light-blue}</span></td><td>#D0EDFC</td></tr>
+            <tr><td><span class="tok-path">filter.chip.text-color</span></td><td><span class="swatch" style="background:#4a4a4a"></span><span class="tok-val">{global.color.grey-1}</span></td><td>#4A4A4A</td></tr>
+            <tr><td><span class="tok-path">filter.chip.label-weight</span></td><td><span class="tok-val">{global.typography.font-weight-semibold}</span></td><td>600 — bold key e.g. "Facility:"</td></tr>
+            <tr><td><span class="tok-path">filter.chip.font-size</span></td><td><span class="tok-val">{global.typography.font-size-md}</span></td><td>15px</td></tr>
+            <tr><td><span class="tok-path">filter.chip.radius</span></td><td><span class="tok-val">{global.borderRadius.chip}</span></td><td>11px (10.796 rounded)</td></tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:11px;font-weight:600;color:#4a4a4a;text-transform:uppercase;letter-spacing:.04em;margin:14px 0 8px">Dropdown panel</div>
+        <table class="tok-table">
+          <thead><tr><th>Token path</th><th>Value / alias</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tok-path">filter.dropdown.bg</span></td><td><span class="swatch" style="background:#fff;border:1px solid #ccc"></span><span class="tok-val">{global.color.white}</span></td><td></td></tr>
+            <tr><td><span class="tok-path">filter.dropdown.border</span></td><td><span class="swatch" style="background:#f1f1f1"></span><span class="tok-val">{global.color.grey-6}</span></td><td>#F1F1F1</td></tr>
+            <tr><td><span class="tok-path">filter.dropdown.shadow</span></td><td><span class="tok-val">{global.shadow.dropdown-panel}</span></td><td>0 4px 4px rgba(0,0,0,.25)</td></tr>
+            <tr><td><span class="tok-path">filter.dropdown.item-hover-bg</span></td><td><span class="swatch" style="background:#d0edfc"></span><span class="tok-val">{global.color.light-blue}</span></td><td>65% opacity, mix-blend-multiply</td></tr>
+            <tr><td><span class="tok-path">filter.dropdown.label-text-color</span></td><td><span class="swatch" style="background:#005ba6"></span><span class="tok-val">{global.color.ps-blue}</span></td><td>"Add a Filter" label</td></tr>
+            <tr><td><span class="tok-path">filter.dropdown.label-font-weight</span></td><td><span class="tok-val">{global.typography.font-weight-bold}</span></td><td>700</td></tr>
+          </tbody>
+        </table>
+
+        <div class="btn-row" style="margin-top:16px">
+          <button class="btn btn-primary" onclick="copyTokens()">Copy filter-tokens.json</button>
+          <span class="confirm" id="tok-confirm">Copied!</span>
+        </div>
+        <div class="hint-box" style="margin-top:10px">In Token Studio: <strong>Settings → Load from file → upload filter-tokens.json</strong>, then make sure both <code>global</code> and <code>component/filter</code> are ticked as active sets.</div>
+      </div>
+    </div>
+
+    <!-- Claude prompt -->
+    <div class="slabel">Claude prompt for this component</div>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon" style="background:#fff3e0">&#9997;</div>
+        <div>
+          <div class="card-title">Ready-to-paste Filter prompt</div>
+          <div class="card-sub">Paste this into Claude Code or Claude.ai after your CLAUDE.md is in place.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="divider"></div>
+        <div class="prompt-output" id="filter-prompt">Generate a Filter component for the PS Design Library.
+
+Tech: React + TypeScript (no any) + Tailwind CSS
+Tokens: Use Token Studio tokens from component/filter set via the ps-asset Tailwind preset.
+
+Component name: Filter
+Location: src/components/Filter/
+
+--- 4 variants (controlled via property1 prop) ---
+
+1. "Filter Null State"
+   - Filter bar (bg: filter.bar.bg, border: filter.bar.border, radius: filter.bar.radius)
+   - Left: icon trigger button (42px wide, filter.field.icon-width)
+   - Centre: "Add a Filter" dropdown select (filter.field.text-color, filter.field.font-size)
+   - Right: free-text search input (filter.field.bg)
+   - Below bar: "No Filters applied" in italic (filter.status.text-color, filter.status.font-size)
+
+2. "Filter + Chip"
+   - Same bar as above
+   - Below bar: one or more chips (filter.chip.bg, filter.chip.radius)
+     - Chip label key in font-weight-semibold, value in font-weight-regular
+     - Dismiss ✕ icon on each chip
+   - "Clear all" and "Save Filter Set" text actions (filter.actions.text-color)
+
+3. "Filter Dropdown"
+   - Same bar, but centre dropdown shows active state:
+     - border: filter.field.border-active (#005BA6)
+     - box-shadow: filter.field.shadow-active (0 0 2px rgba(0,156,244,0.41))
+     - Label "Add a Filter" in bold (filter.dropdown.label-text-color) above selected value
+   - Open panel (filter.dropdown.bg, filter.dropdown.shadow, filter.dropdown.radius):
+     - List items at 25px line-height (filter.dropdown.item-text-color)
+     - Hovered/selected row: filter.dropdown.item-hover-bg at 65% opacity, mix-blend-multiply
+   - "No Filters applied" status below bar
+
+4. "Saved Filter Selected"
+   - Icon trigger has active border (filter.field.border-active) and shadow (filter.field.shadow-active)
+   - Chip(s) + Clear all + Save Filter Set identical to variant 2
+
+--- Accessibility ---
+- role="combobox" on the filter select, aria-expanded on open
+- role="listbox" + role="option" on dropdown items
+- aria-pressed on icon trigger
+- aria-label="Remove filter" on chip dismiss buttons
+- Full keyboard nav: Arrow keys to move through list, Enter to select, Escape to close
+
+--- Files to generate ---
+- src/components/Filter/Filter.tsx          (component with all 4 variants)
+- src/components/Filter/Filter.stories.tsx  (one story per variant, autodocs)
+- src/components/Filter/Filter.test.tsx     (render, open dropdown, select item, dismiss chip, keyboard nav)
+- src/components/Filter/index.ts            (named export)
+
+Before writing code, explain what you are going to build.
+Generate complete files — no placeholders or "// rest of code here".</div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="copyFilterPrompt()">Copy prompt</button>
+          <span class="confirm" id="fp-confirm">Copied!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Files Claude will produce -->
+    <div class="slabel">What Claude will produce</div>
+    <div class="card">
+      <div class="card-body" style="padding-top:14px">
+        <div class="preview-box">
+          <div class="preview-header"><span>Files Claude generates</span><span style="color:#1a56b0">4 files</span></div>
+          <div class="preview-content">
+            <div style="margin-bottom:8px"><span class="tick">&#10003;</span> <span class="file-pill">Filter.tsx</span> Component with all 4 variants, Token Studio classes, forwardRef, full TypeScript</div>
+            <div style="margin-bottom:8px"><span class="tick">&#10003;</span> <span class="file-pill">Filter.stories.tsx</span> Storybook stories — Null State, Chip, Dropdown, Saved Filter Selected</div>
+            <div style="margin-bottom:8px"><span class="tick">&#10003;</span> <span class="file-pill">Filter.test.tsx</span> Unit tests — render, open, select, dismiss chip, keyboard navigation</div>
+            <div><span class="tick">&#10003;</span> <span class="file-pill">index.ts</span> Named export for clean imports anywhere in the repo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div class="footer">
   Built with <a href="https://claude.ai">Claude</a> &mdash; PS Design Library &mdash; Phase 4 Claude Automation
 </div>
@@ -508,8 +788,10 @@
 function switchStep(n){
   document.getElementById('page1').classList.toggle('active',n===1);
   document.getElementById('page2').classList.toggle('active',n===2);
+  document.getElementById('page3').classList.toggle('active',n===3);
   document.getElementById('tab1').classList.toggle('active',n===1);
   document.getElementById('tab2').classList.toggle('active',n===2);
+  document.getElementById('tab3').classList.toggle('active',n===3);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -625,6 +907,33 @@ function copyPrompt(){
 }
 
 updatePrompt();
+
+/* ══════════════════════════
+   STEP 3 — FILTER
+══════════════════════════ */
+var filterTokensJson = null;
+function getFilterTokens(){
+  if(filterTokensJson) return filterTokensJson;
+  var r=new XMLHttpRequest();
+  r.open('GET','filter-tokens.json',false);
+  r.send();
+  filterTokensJson=r.responseText;
+  return filterTokensJson;
+}
+function copyTokens(){
+  var text;
+  try{text=getFilterTokens();}catch(e){text='Could not load filter-tokens.json';}
+  navigator.clipboard.writeText(text).then(function(){
+    var c=document.getElementById('tok-confirm');c.style.display='inline';
+    setTimeout(function(){c.style.display='none';},2500);
+  });
+}
+function copyFilterPrompt(){
+  navigator.clipboard.writeText(document.getElementById('filter-prompt').textContent).then(function(){
+    var c=document.getElementById('fp-confirm');c.style.display='inline';
+    setTimeout(function(){c.style.display='none';},2500);
+  });
+}
 </script>
 </body>
 </html>

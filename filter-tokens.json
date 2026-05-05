@@ -1,0 +1,132 @@
+{
+  "$metadata": {
+    "tokenSetOrder": ["global", "component/filter"]
+  },
+  "global": {
+    "color": {
+      "ps-blue":       { "value": "#005BA6", "type": "color", "description": "Main/PS Blue — primary brand blue" },
+      "light-blue":    { "value": "#D0EDFC", "type": "color", "description": "Main/Light Blue — chip & hover highlight" },
+      "white":         { "value": "#FFFFFF", "type": "color", "description": "Main/White" },
+      "grey-1":        { "value": "#4A4A4A", "type": "color", "description": "Main/Grey 1 — primary text" },
+      "grey-2":        { "value": "#5C5C5C", "type": "color", "description": "text/secondary" },
+      "grey-3":        { "value": "#949494", "type": "color", "description": "Main/Grey 3 — placeholder / italic status" },
+      "grey-4":        { "value": "#CCCCCC", "type": "color", "description": "Main/Grey 4 — default field border" },
+      "grey-5":        { "value": "#DCDCDC", "type": "color", "description": "Main/Grey 5 — filter bar border" },
+      "grey-6":        { "value": "#F1F1F1", "type": "color", "description": "Main/Grey 6 — dropdown panel border" },
+      "grey-7":        { "value": "#FAFAFA", "type": "color", "description": "Main/Grey 7 — filter bar background" },
+      "black":         { "value": "#000000", "type": "color", "description": "Dropdown item text" }
+    },
+    "typography": {
+      "font-family-base":  { "value": "Source Sans Pro", "type": "fontFamilies" },
+      "font-size-xs":      { "value": "12", "type": "fontSizes", "description": "px — dropdown label" },
+      "font-size-sm":      { "value": "13", "type": "fontSizes", "description": "px — status text, action links" },
+      "font-size-md":      { "value": "15", "type": "fontSizes", "description": "px — chip label" },
+      "font-size-base":    { "value": "16", "type": "fontSizes", "description": "px — field text" },
+      "font-weight-regular": { "value": "400", "type": "fontWeights" },
+      "font-weight-semibold":{ "value": "600", "type": "fontWeights" },
+      "font-weight-bold":    { "value": "700", "type": "fontWeights" },
+      "letter-spacing-field":{ "value": "-0.16", "type": "letterSpacing", "description": "px — field text tracking" }
+    },
+    "spacing": {
+      "none":  { "value": "0",  "type": "spacing" },
+      "xs":    { "value": "5",  "type": "spacing" },
+      "sm":    { "value": "10", "type": "spacing" },
+      "md":    { "value": "15", "type": "spacing" }
+    },
+    "borderRadius": {
+      "sm":    { "value": "5",  "type": "borderRadius" },
+      "md":    { "value": "8",  "type": "borderRadius" },
+      "chip":  { "value": "11", "type": "borderRadius", "description": "Rounded pill for filter chips (10.796 → 11)" },
+      "dropdown": { "value": "2", "type": "borderRadius" }
+    },
+    "shadow": {
+      "focus-ring": {
+        "value": {
+          "x": "0", "y": "0", "blur": "2", "spread": "0",
+          "color": "rgba(0,156,244,0.41)", "type": "dropShadow"
+        },
+        "type": "boxShadow",
+        "description": "Blue glow on active/selected filter field"
+      },
+      "dropdown-panel": {
+        "value": {
+          "x": "0", "y": "4", "blur": "4", "spread": "0",
+          "color": "rgba(0,0,0,0.25)", "type": "dropShadow"
+        },
+        "type": "boxShadow",
+        "description": "Elevation shadow for the open dropdown list"
+      }
+    }
+  },
+  "component/filter": {
+    "filter": {
+      "bar": {
+        "bg":           { "value": "{global.color.grey-7}",    "type": "color" },
+        "border":       { "value": "{global.color.grey-5}",    "type": "color" },
+        "radius":       { "value": "{global.borderRadius.md}", "type": "borderRadius" },
+        "padding-x":    { "value": "{global.spacing.sm}",      "type": "spacing", "description": "10px — container horizontal padding" },
+        "padding-y":    { "value": "14",                        "type": "spacing", "description": "px — container vertical padding" }
+      },
+      "field": {
+        "bg":              { "value": "{global.color.white}",         "type": "color" },
+        "border-default":  { "value": "{global.color.grey-4}",        "type": "color" },
+        "border-active":   { "value": "{global.color.ps-blue}",       "type": "color" },
+        "shadow-active":   { "value": "{global.shadow.focus-ring}",   "type": "boxShadow" },
+        "text-color":      { "value": "{global.color.grey-2}",        "type": "color" },
+        "font-family":     { "value": "{global.typography.font-family-base}", "type": "fontFamilies" },
+        "font-size":       { "value": "{global.typography.font-size-base}",   "type": "fontSizes" },
+        "font-weight":     { "value": "{global.typography.font-weight-regular}", "type": "fontWeights" },
+        "letter-spacing":  { "value": "{global.typography.letter-spacing-field}", "type": "letterSpacing" },
+        "padding-x":       { "value": "{global.spacing.md}",   "type": "spacing" },
+        "padding-y":       { "value": "{global.spacing.sm}",   "type": "spacing" },
+        "height":          { "value": "40", "type": "sizing", "description": "px" },
+        "icon-width":      { "value": "42", "type": "sizing", "description": "px — icon trigger field width" },
+        "radius-left":     { "value": "{global.borderRadius.sm}", "type": "borderRadius", "description": "Left-side rounding on split field" }
+      },
+      "chip": {
+        "bg":              { "value": "{global.color.light-blue}", "type": "color" },
+        "text-color":      { "value": "{global.color.grey-1}",    "type": "color" },
+        "label-weight":    { "value": "{global.typography.font-weight-semibold}", "type": "fontWeights" },
+        "value-weight":    { "value": "{global.typography.font-weight-regular}",  "type": "fontWeights" },
+        "font-size":       { "value": "{global.typography.font-size-md}",         "type": "fontSizes" },
+        "radius":          { "value": "{global.borderRadius.chip}", "type": "borderRadius" },
+        "padding-x":       { "value": "11", "type": "spacing", "description": "px" },
+        "padding-y":       { "value": "2",  "type": "spacing", "description": "px" },
+        "gap":             { "value": "2",  "type": "spacing", "description": "px — gap between label and remove icon" }
+      },
+      "status": {
+        "text-color":   { "value": "{global.color.grey-3}",              "type": "color" },
+        "font-size":    { "value": "{global.typography.font-size-sm}",   "type": "fontSizes" },
+        "font-family":  { "value": "{global.typography.font-family-base}", "type": "fontFamilies" },
+        "font-style":   { "value": "italic",                              "type": "other" },
+        "line-height":  { "value": "18", "type": "lineHeights", "description": "px" }
+      },
+      "actions": {
+        "text-color":   { "value": "{global.color.grey-2}",            "type": "color" },
+        "font-size":    { "value": "{global.typography.font-size-sm}", "type": "fontSizes" },
+        "font-weight":  { "value": "{global.typography.font-weight-regular}", "type": "fontWeights" },
+        "line-height":  { "value": "18", "type": "lineHeights", "description": "px" },
+        "clear-all-width":   { "value": "65",  "type": "sizing", "description": "px" },
+        "save-set-width":    { "value": "95",  "type": "sizing", "description": "px" },
+        "height":            { "value": "23",  "type": "sizing", "description": "px" },
+        "radius":            { "value": "14",  "type": "borderRadius" }
+      },
+      "dropdown": {
+        "bg":           { "value": "{global.color.white}",              "type": "color" },
+        "border":       { "value": "{global.color.grey-6}",             "type": "color" },
+        "shadow":       { "value": "{global.shadow.dropdown-panel}",    "type": "boxShadow" },
+        "radius":       { "value": "{global.borderRadius.dropdown}",    "type": "borderRadius" },
+        "item-hover-bg":{ "value": "{global.color.light-blue}",         "type": "color" },
+        "item-hover-opacity": { "value": "0.65", "type": "other", "description": "mix-blend-multiply opacity on hover row" },
+        "item-text-color":  { "value": "{global.color.black}",          "type": "color" },
+        "item-font-size":   { "value": "{global.typography.font-size-md}", "type": "fontSizes" },
+        "item-line-height": { "value": "25", "type": "lineHeights", "description": "px" },
+        "label-text-color": { "value": "{global.color.ps-blue}",        "type": "color" },
+        "label-font-size":  { "value": "{global.typography.font-size-xs}", "type": "fontSizes" },
+        "label-font-weight":{ "value": "{global.typography.font-weight-bold}", "type": "fontWeights" },
+        "padding-x":    { "value": "24", "type": "spacing", "description": "px — dropdown list padding" },
+        "padding-y":    { "value": "16", "type": "spacing", "description": "px" }
+      }
+    }
+  }
+}
