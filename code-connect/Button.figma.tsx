@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Button } from '@partssource/react-kit';
 
-figma.connect(Button, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Button, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=115:66', {
   props: {
     variant: figma.enum('Variant', {
       Primary: 'primary',

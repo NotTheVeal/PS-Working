@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Breadcrumb, BreadcrumbBack, Accordion, AccordionCount, Stepper } from '@partssource/react-kit';
 
-figma.connect(Accordion, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Accordion, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4390:39583', {
   props: {
     variant: figma.enum('Variant', {
       Default: 'default',
@@ -38,7 +38,7 @@ figma.connect(BreadcrumbBack, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ
   example: ({ label }) => <BreadcrumbBack label={label} onClick={() => {}} />,
 });
 
-figma.connect(Stepper, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Stepper, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4723:4108', {
   props: { steps: figma.children('*') },
   example: () => <Stepper steps={[]} currentStep={0} />,
 });

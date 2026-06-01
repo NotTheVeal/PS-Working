@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { StatusBadge } from '@partssource/react-kit';
 
-figma.connect(StatusBadge, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(StatusBadge, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4390:43755', {
   props: {
     tone: figma.enum('Tone', {
       Neutral: 'neutral',

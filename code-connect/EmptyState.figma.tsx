@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { EmptyState } from '@partssource/react-kit';
 
-figma.connect(EmptyState, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(EmptyState, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4471:47', {
   props: {
     title: figma.string('Title'),
     body: figma.string('Body'),

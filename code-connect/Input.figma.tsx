@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Input } from '@partssource/react-kit';
 
-figma.connect(Input, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Input, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=1581:89', {
   props: {
     label: figma.string('Label'),
     size: figma.enum('Size', { MD: 'md', LG: 'lg' }),

@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Avatar } from '@partssource/react-kit';
 
-figma.connect(Avatar, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Avatar, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4467:47', {
   props: {
     initials: figma.string('Initials'),
     size: figma.enum('Size', {
