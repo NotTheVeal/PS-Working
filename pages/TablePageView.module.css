@@ -1,0 +1,243 @@
+/* ==========================================================================
+   TablePageView — CSS Modules
+   All colors use PS design token CSS variables. No hardcoded hex values.
+   ========================================================================== */
+
+/* Full-page shell */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--ps-prim-gray-50, #fafafb);
+}
+
+/* ------------------------------------------------------------------
+   Dark blue page-title banner (below TopNav)
+   ------------------------------------------------------------------ */
+.pageBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--ps-prim-blue-900, #003763);
+  height: 52px;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.pageBannerTitle {
+  color: var(--ps-prim-gray-0, #ffffff);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.24px;
+  line-height: 36px;
+}
+
+.pageBannerRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pageBannerLogo {
+  height: 24px;
+  object-fit: contain;
+}
+
+.pageBannerDivider {
+  width: 1px;
+  height: 25px;
+  background-color: var(--ps-prim-gray-400, #cccccc);
+  opacity: 0.5;
+}
+
+.pageBannerPro {
+  color: var(--ps-prim-gray-600, #4a4a4a);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ------------------------------------------------------------------
+   Body: sidebar + content
+   ------------------------------------------------------------------ */
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------
+   Main content
+   ------------------------------------------------------------------ */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  overflow: auto;
+  gap: 16px;
+}
+
+/* ------------------------------------------------------------------
+   Controls row (Only Me toggle + view switchers)
+   ------------------------------------------------------------------ */
+.controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.onlyMeControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ------------------------------------------------------------------
+   Table wrapper — horizontal scroll on overflow
+   ------------------------------------------------------------------ */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  border-radius: 4px;
+  background-color: var(--ps-prim-gray-0, #ffffff);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--ps-prim-gray-900, #222222);
+}
+
+/* ------------------------------------------------------------------
+   Header row
+   ------------------------------------------------------------------ */
+.headerRow {
+  background-color: var(--ps-prim-gray-0, #ffffff);
+}
+
+.thCheck,
+.th,
+.thNarrow,
+.thWide,
+.thWider {
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ps-prim-gray-700, #555555);
+  border-bottom: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  border-right: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  white-space: nowrap;
+}
+
+.thCheck {
+  width: 44px;
+  text-align: center;
+}
+
+.thNarrow {
+  width: 45px;
+}
+
+.thWide {
+  min-width: 180px;
+}
+
+.thWider {
+  min-width: 220px;
+}
+
+/* ------------------------------------------------------------------
+   Data rows
+   ------------------------------------------------------------------ */
+.dataRow {
+  background-color: var(--ps-prim-gray-0, #ffffff);
+}
+
+/* Alternating stripe */
+.rowStriped {
+  background-color: var(--ps-prim-gray-50, #fafafb);
+}
+
+/* Requoted row — light blue tint (design token approximation for #d0edfc) */
+.rowRequoted {
+  background-color: var(--ps-prim-blue-50, #d0edfc);
+}
+
+/* Selected row highlight */
+.rowSelected {
+  outline: 2px solid var(--ps-prim-blue-500, #005ba6);
+  outline-offset: -2px;
+}
+
+.tdCheck,
+.td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  border-right: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tdCheck {
+  text-align: center;
+  width: 44px;
+}
+
+/* ------------------------------------------------------------------
+   Legend
+   ------------------------------------------------------------------ */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legendLabel {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--ps-prim-gray-900, #000000);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--ps-prim-gray-900, #000000);
+}
+
+.legendSwatch {
+  width: 13px;
+  height: 15px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Critical items — light red (#facbcb → closest token approximation) */
+.swatchCritical {
+  background-color: var(--ps-prim-red-100, #facbcb);
+}
+
+/* Min order qty — light orange (#ffe3c3 → orange token approximation) */
+.swatchMinQty {
+  background-color: var(--ps-prim-orange-100, #ffe3c3);
+}
+
+/* Requoted — light blue (#d0edfc) */
+.swatchRequoted {
+  background-color: var(--ps-prim-blue-50, #d0edfc);
+}
+
+/* ------------------------------------------------------------------
+   Pagination row
+   ------------------------------------------------------------------ */
+.paginationRow {
+  display: flex;
+  justify-content: flex-end;
+}
