@@ -1,30 +1,57 @@
-/* MyDashboard page layout */
+/* MyDashboard — CSS Modules
+   All color values use PS design token CSS vars.
+   No raw Tailwind on wrapper/layout elements.
+   Tailwind is only allowed inside @partssource/react-kit components.
+*/
 
-.page {
+/* ── Page shell ──────────────────────────────────────── */
+.pageRoot {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   background-color: var(--ps-prim-gray-50);
 }
 
-.body {
+.bodyLayout {
   display: flex;
   flex: 1;
   overflow: hidden;
+  min-height: 0;
 }
 
-.main {
+.mainContent {
   flex: 1;
   overflow-y: auto;
   padding: var(--ps-spacing-6, 24px);
   display: flex;
   flex-direction: column;
+  gap: var(--ps-spacing-4, 16px);
+}
+
+/* ── Page heading ────────────────────────────────────── */
+.pageHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3, 12px);
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.7px;
+  color: var(--ps-prim-gray-900);
+  margin: 0;
+}
+
+/* ── Widget grid ─────────────────────────────────────── */
+.widgetsGrid {
+  display: flex;
+  flex-direction: column;
   gap: var(--ps-spacing-6, 24px);
 }
 
-/* ── Table card ──────────────────────────────────────── */
-.tableCard {
+/* ── Parts Events card ───────────────────────────────── */
+.partsEventsCard {
   background: #fff;
   border: 2px solid var(--ps-prim-gray-100, #f1f1f1);
   border-radius: 5px;
@@ -34,26 +61,18 @@
   gap: var(--ps-spacing-6, 24px);
 }
 
-/* ── Table toolbar ───────────────────────────────────── */
-.toolbar {
+/* ── Card header ─────────────────────────────────────── */
+.cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.toolbarLeft {
+.cardTitleGroup {
   display: flex;
   align-items: center;
   gap: var(--ps-spacing-2, 9px);
-}
-
-.titleText {
-  font-size: 25px;
-  font-weight: 300;
-  color: var(--ps-prim-gray-900, #000);
-  letter-spacing: -0.7px;
-  white-space: nowrap;
 }
 
 .dragHandle {
@@ -63,43 +82,33 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: var(--ps-prim-gray-400, #aaa);
+  color: var(--ps-prim-gray-400);
+  font-size: 18px;
+  transform: rotate(90deg);
+  user-select: none;
 }
 
-.toolbarRight {
-  display: flex;
-  align-items: center;
-  gap: var(--ps-spacing-8, 32px);
+.cardTitle {
+  font-size: 25px;
+  font-weight: 300;
+  color: var(--ps-prim-gray-900);
+  letter-spacing: -0.7px;
+  white-space: nowrap;
+  margin: 0;
 }
 
-.toolbarActions {
+.cardHeaderActions {
   display: flex;
   align-items: center;
   gap: var(--ps-spacing-6, 24px);
 }
 
-.iconActions {
-  display: flex;
-  align-items: center;
-  gap: var(--ps-spacing-3, 13px);
-}
-
-.iconButton {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ps-prim-gray-600, #555);
-}
-
-/* ── View toggle (grid / chart) ──────────────────────── */
+/* ── View toggle (grid / chart icons) ────────────────── */
+/* TODO: no react-kit match — approximated with styled <button> elements */
 .viewToggle {
   display: flex;
   box-shadow: 0px 2px 4px rgba(21, 21, 21, 0.08), 0px 6px 6px rgba(21, 21, 21, 0.08);
-  border-radius: 5px;
+  border-radius: var(--ps-radius-sm, 5px);
   overflow: hidden;
 }
 
@@ -111,61 +120,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ps-prim-gray-500, #777);
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  color: var(--ps-prim-gray-500);
+  transition: background 0.15s ease;
+}
+
+.viewToggleBtn:hover {
+  background: var(--ps-prim-gray-50);
 }
 
 .viewToggleBtnActive {
-  background: #fff;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ps-prim-blue-500, #005ba6);
+  background: var(--ps-prim-gray-100);
+  color: var(--ps-prim-blue-500);
 }
 
 /* ── Parts / Service pill toggle ─────────────────────── */
-.segmentToggle {
-  position: relative;
-  background: var(--ps-prim-gray-200, #d9d9d9);
-  border-radius: 74px;
-  padding: 4px;
+/* TODO: no react-kit match — approximated with styled <button> elements */
+.pillToggle {
   display: flex;
   align-items: center;
-  min-width: 200px;
-}
-
-.segmentTrack {
-  position: absolute;
-  left: 5.8px;
-  top: 4px;
-  bottom: 4px;
-  width: 148px;
-  background: var(--ps-prim-blue-500, #005ba6);
+  background: var(--ps-prim-gray-200);
   border-radius: 74px;
-  transition: left 0.2s ease;
+  padding: 4px;
+  gap: 0;
+  min-width: 220px;
 }
 
-.segmentBtn {
-  position: relative;
-  z-index: 1;
+.pillToggleBtn {
+  flex: 1;
   background: none;
   border: none;
-  padding: 4px 16px;
+  padding: 5px 16px;
+  border-radius: 74px;
   cursor: pointer;
   font-size: 14px;
   letter-spacing: -0.14px;
-  border-radius: 74px;
+  color: var(--ps-prim-gray-500);
+  transition: background 0.15s ease, color 0.15s ease;
   white-space: nowrap;
 }
 
-.segmentBtnActive {
+.pillToggleBtnActive {
+  background: var(--ps-prim-blue-500);
   color: #fff;
 }
 
-.segmentBtnInactive {
-  color: var(--ps-prim-gray-500, #777);
+.pillToggleInactive {
+  background: none;
+  color: var(--ps-prim-gray-500);
 }
 
 /* ── Filter row ──────────────────────────────────────── */
@@ -173,46 +177,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--ps-spacing-4, 16px);
   width: 100%;
 }
 
 .searchWrapper {
-  position: relative;
+  flex-shrink: 0;
   width: 283px;
 }
 
-.searchInput {
-  width: 100%;
-  height: 33px;
-  border: 1px solid var(--ps-prim-gray-300, #ccc);
-  border-radius: 3px;
-  background: #fff;
-  padding: 0 32px 0 10px;
-  font-size: 14px;
-  color: var(--ps-prim-gray-700, #4a4a4a);
-}
-
-.searchInput::placeholder {
-  color: var(--ps-prim-gray-400, #777);
-}
-
-.searchIcon {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--ps-prim-gray-400, #777);
-  pointer-events: none;
-}
-
-.divider {
-  height: 1px;
-  background: var(--ps-prim-gray-200, #ddd);
-  width: 100%;
-  margin: 0;
-}
-
 /* ── Data table ──────────────────────────────────────── */
+/* TODO: no react-kit DataTable match — approximated with native <table> */
 .tableWrapper {
   width: 100%;
   overflow-x: auto;
@@ -221,57 +196,56 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
 }
 
-.table th {
+.th {
   background: #fff;
-  color: var(--ps-prim-gray-700, #4a4a4a);
+  color: var(--ps-prim-gray-700);
   font-size: 15px;
   font-weight: 600;
   text-transform: capitalize;
   letter-spacing: 0.15px;
   padding: 13px 11px 14px;
   text-align: left;
-  border-right: 1px solid var(--ps-prim-gray-200, #ddd);
-  border-bottom: 1px solid var(--ps-prim-gray-200, #ddd);
+  box-shadow: inset -1px 0 0 var(--ps-prim-gray-200), inset 0 -1px 0 var(--ps-prim-gray-200);
   white-space: nowrap;
 }
 
-.table th:last-child {
-  border-right: none;
+.th:last-child {
+  box-shadow: inset 0 -1px 0 var(--ps-prim-gray-200);
 }
 
-.table td {
+.td {
   font-size: 14px;
-  color: var(--ps-prim-gray-700, #4a4a4a);
+  color: var(--ps-prim-gray-700);
   padding: 11px;
-  border-right: 1px solid var(--ps-prim-gray-200, #ddd);
-  border-bottom: 1px solid var(--ps-prim-gray-200, #ddd);
+  box-shadow: inset -1px 0 0 var(--ps-prim-gray-200), inset 0 -1px 0 var(--ps-prim-gray-200);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 160px;
 }
 
-.table td:last-child {
-  border-right: none;
+.td:last-child {
+  box-shadow: inset 0 -1px 0 var(--ps-prim-gray-200);
 }
 
-.table tbody tr:nth-child(odd) td {
+.trEven td {
   background: #fdfdfd;
 }
 
-.table tbody tr:nth-child(even) td {
-  background: var(--ps-prim-gray-50, #f1f1f1);
+.trOdd td {
+  background: var(--ps-prim-gray-50);
 }
 
-.table tbody tr:hover td {
-  background: var(--ps-prim-blue-50, #e8f0f8);
+.trEven:hover td,
+.trOdd:hover td {
+  background: var(--ps-prim-blue-50);
 }
 
 /* ── Pagination row ──────────────────────────────────── */
 .paginationRow {
   display: flex;
   justify-content: flex-end;
-  padding-top: var(--ps-spacing-4, 16px);
+  padding-top: var(--ps-spacing-2, 8px);
 }
