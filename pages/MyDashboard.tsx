@@ -10,6 +10,7 @@ import {
   FilterShell,
   FilterChip,
 } from "@partssource/react-kit";
+import DataTable, { badgeCell, ColumnDef } from "./components/DataTable";
 import styles from "./MyDashboard.module.css";
 
 // ---------------------------------------------------------------------------
@@ -125,42 +126,33 @@ function StatusCell({ status }: { status: OrderStatus }) {
   return <StatusBadge tone={tone}>{status}</StatusBadge>;
 }
 
-/** Parts Events data table */
-// TODO: no react-kit DataTable match — approximated with native <table> inside a wrapper div
+const PARTS_EVENTS_COLUMNS: ColumnDef<PartsEvent>[] = [
+  { key: 'facility', header: 'Facility' },
+  { key: 'wo', header: 'WO' },
+  { key: 'ref', header: 'Ref #' },
+  { key: 'po', header: 'PO #' },
+  { key: 'qty', header: 'Qty' },
+  { key: 'price', header: 'Price' },
+  {
+    key: 'status',
+    header: 'Status',
+    render: (val) => (
+      <StatusBadge tone={val === 'Ordered' ? 'success' : 'warning'}>
+        {String(val)}
+      </StatusBadge>
+    ),
+  },
+  { key: 'orderNum', header: 'Order #' },
+];
+
+/** Parts Events data table — uses shared DataTable component */
 function PartsEventsTable({ rows }: { rows: PartsEvent[] }) {
   return (
-    <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className={styles.th}>Facility</th>
-            <th className={styles.th}>WO</th>
-            <th className={styles.th}>Ref #</th>
-            <th className={styles.th}>PO #</th>
-            <th className={styles.th}>Qty</th>
-            <th className={styles.th}>Price</th>
-            <th className={styles.th}>Status</th>
-            <th className={styles.th}>Order #</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, idx) => (
-            <tr key={row.id} className={idx % 2 === 0 ? styles.trEven : styles.trOdd}>
-              <td className={styles.td}>{row.facility}</td>
-              <td className={styles.td}>{row.wo}</td>
-              <td className={styles.td}>{row.ref}</td>
-              <td className={styles.td}>{row.po}</td>
-              <td className={styles.td}>{row.qty}</td>
-              <td className={styles.td}>{row.price}</td>
-              <td className={styles.td}>
-                <StatusCell status={row.status} />
-              </td>
-              <td className={styles.td}>{row.orderNum}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <DataTable<PartsEvent>
+      columns={PARTS_EVENTS_COLUMNS}
+      rows={rows}
+      rowKey="id"
+    />
   );
 }
 
