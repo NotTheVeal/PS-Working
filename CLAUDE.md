@@ -6,14 +6,17 @@ Always use `@partssource/react-kit` components. Never use native HTML elements
 
 ## Design Tokens
 Match PartsSource design tokens for all values:
-- **Colors**: Use token variables (e.g. `--ps-color-primary`, `--ps-color-blue-600`) — never hardcode hex values
+- **Colors**: Use token CSS variables — `--ps-prim-blue-500`, `--ps-prim-gray-700`, etc. Never hardcode hex values.
+- Token naming: `--ps-prim-<ramp>-<step>` (e.g. `--ps-prim-blue-50` … `--ps-prim-blue-900`, `--ps-prim-orange-400`)
 - **Spacing**: Use token spacing scale — never hardcode px values
 - **Typography**: Use token type ramp — never hardcode font sizes or weights
 
 ## Output Format
 - All output files must be TypeScript: `.tsx` for components, `.ts` for utilities
-- No Tailwind CSS — use CSS Modules (`.module.css`) or styled-components if styling beyond tokens is needed
-- Prefer CSS Modules for new files unless the surrounding codebase uses styled-components
+- **Styling split**:
+  - Inside `@partssource/react-kit` components: Tailwind classes (that is how the library is built — accepted)
+  - Wrapper / layout / composition code outside kit components: CSS Modules (`.module.css`) — no raw Tailwind
+- Never hardcode colors or spacing in wrapper CSS — use `var(--ps-prim-*)` tokens
 
 ## Figma → Code Workflow
 When given a Figma frame URL:

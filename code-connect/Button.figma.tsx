@@ -1,6 +1,6 @@
 import React from 'react';
 import figma from '@figma/code-connect';
-import { Button, ButtonInline } from '@partssource/react-kit';
+import { Button } from '@partssource/react-kit';
 
 figma.connect(Button, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
   props: {
@@ -11,27 +11,14 @@ figma.connect(Button, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
       Pill: 'pill',
       Arrow: 'arrow',
     }),
-    size: figma.enum('Size', {
-      SM: 'sm',
-      LG: 'lg',
-    }),
-    disabled: figma.boolean('Disabled'),
+    size: figma.enum('Size', { LG: 'lg', SM: 'sm' }),
     loading: figma.boolean('Loading'),
+    disabled: figma.boolean('Disabled'),
     children: figma.string('Label'),
   },
-  example: ({ variant, size, disabled, loading, children }) => (
-    <Button variant={variant} size={size} disabled={disabled} loading={loading}>
+  example: ({ variant, size, loading, disabled, children }) => (
+    <Button variant={variant} size={size} loading={loading} disabled={disabled}>
       {children}
     </Button>
-  ),
-});
-
-figma.connect(ButtonInline, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
-  props: {
-    children: figma.string('Label'),
-    disabled: figma.boolean('Disabled'),
-  },
-  example: ({ children, disabled }) => (
-    <ButtonInline disabled={disabled}>{children}</ButtonInline>
   ),
 });

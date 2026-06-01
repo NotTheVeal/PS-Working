@@ -5,10 +5,12 @@ import { Drawer } from '@partssource/react-kit';
 figma.connect(Drawer, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
   props: {
     title: figma.string('Title'),
+    subtitle: figma.string('Subtitle'),
     open: figma.boolean('Open'),
-    children: figma.children('*'),
   },
-  example: ({ title, open, children }) => (
-    <Drawer title={title} open={open} onClose={() => {}}>{children}</Drawer>
+  example: ({ title, subtitle, open }) => (
+    <Drawer open={open} title={title} subtitle={subtitle} onClose={() => {}}>
+      {/* drawer body */}
+    </Drawer>
   ),
 });
