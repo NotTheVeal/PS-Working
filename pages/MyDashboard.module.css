@@ -1,0 +1,277 @@
+/* MyDashboard page layout */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--ps-prim-gray-50);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ps-spacing-6, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-6, 24px);
+}
+
+/* ── Table card ──────────────────────────────────────── */
+.tableCard {
+  background: #fff;
+  border: 2px solid var(--ps-prim-gray-100, #f1f1f1);
+  border-radius: 5px;
+  padding: var(--ps-spacing-6, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-6, 24px);
+}
+
+/* ── Table toolbar ───────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2, 9px);
+}
+
+.titleText {
+  font-size: 25px;
+  font-weight: 300;
+  color: var(--ps-prim-gray-900, #000);
+  letter-spacing: -0.7px;
+  white-space: nowrap;
+}
+
+.dragHandle {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--ps-prim-gray-400, #aaa);
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-8, 32px);
+}
+
+.toolbarActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-6, 24px);
+}
+
+.iconActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3, 13px);
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ps-prim-gray-600, #555);
+}
+
+/* ── View toggle (grid / chart) ──────────────────────── */
+.viewToggle {
+  display: flex;
+  box-shadow: 0px 2px 4px rgba(21, 21, 21, 0.08), 0px 6px 6px rgba(21, 21, 21, 0.08);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.viewToggleBtn {
+  background: #fff;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ps-prim-gray-500, #777);
+}
+
+.viewToggleBtnActive {
+  background: #fff;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ps-prim-blue-500, #005ba6);
+}
+
+/* ── Parts / Service pill toggle ─────────────────────── */
+.segmentToggle {
+  position: relative;
+  background: var(--ps-prim-gray-200, #d9d9d9);
+  border-radius: 74px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+}
+
+.segmentTrack {
+  position: absolute;
+  left: 5.8px;
+  top: 4px;
+  bottom: 4px;
+  width: 148px;
+  background: var(--ps-prim-blue-500, #005ba6);
+  border-radius: 74px;
+  transition: left 0.2s ease;
+}
+
+.segmentBtn {
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  padding: 4px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: -0.14px;
+  border-radius: 74px;
+  white-space: nowrap;
+}
+
+.segmentBtnActive {
+  color: #fff;
+}
+
+.segmentBtnInactive {
+  color: var(--ps-prim-gray-500, #777);
+}
+
+/* ── Filter row ──────────────────────────────────────── */
+.filterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 283px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 33px;
+  border: 1px solid var(--ps-prim-gray-300, #ccc);
+  border-radius: 3px;
+  background: #fff;
+  padding: 0 32px 0 10px;
+  font-size: 14px;
+  color: var(--ps-prim-gray-700, #4a4a4a);
+}
+
+.searchInput::placeholder {
+  color: var(--ps-prim-gray-400, #777);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ps-prim-gray-400, #777);
+  pointer-events: none;
+}
+
+.divider {
+  height: 1px;
+  background: var(--ps-prim-gray-200, #ddd);
+  width: 100%;
+  margin: 0;
+}
+
+/* ── Data table ──────────────────────────────────────── */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th {
+  background: #fff;
+  color: var(--ps-prim-gray-700, #4a4a4a);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.15px;
+  padding: 13px 11px 14px;
+  text-align: left;
+  border-right: 1px solid var(--ps-prim-gray-200, #ddd);
+  border-bottom: 1px solid var(--ps-prim-gray-200, #ddd);
+  white-space: nowrap;
+}
+
+.table th:last-child {
+  border-right: none;
+}
+
+.table td {
+  font-size: 14px;
+  color: var(--ps-prim-gray-700, #4a4a4a);
+  padding: 11px;
+  border-right: 1px solid var(--ps-prim-gray-200, #ddd);
+  border-bottom: 1px solid var(--ps-prim-gray-200, #ddd);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table td:last-child {
+  border-right: none;
+}
+
+.table tbody tr:nth-child(odd) td {
+  background: #fdfdfd;
+}
+
+.table tbody tr:nth-child(even) td {
+  background: var(--ps-prim-gray-50, #f1f1f1);
+}
+
+.table tbody tr:hover td {
+  background: var(--ps-prim-blue-50, #e8f0f8);
+}
+
+/* ── Pagination row ──────────────────────────────────── */
+.paginationRow {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--ps-spacing-4, 16px);
+}
