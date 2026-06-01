@@ -1,0 +1,265 @@
+/* ============================================================
+   MyLists Page — CSS Modules
+   All color values use PS design token variables.
+   All spacing uses the PS token scale.
+   No raw Tailwind on wrapper elements.
+   ============================================================ */
+
+/* --- Page shell ------------------------------------------- */
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--ps-prim-gray-50);
+}
+
+.topNavWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.bodyWrapper {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* --- Left Nav --------------------------------------------- */
+
+.leftNavWrapper {
+  flex-shrink: 0;
+}
+
+/* --- Main content ----------------------------------------- */
+
+.mainContent {
+  flex: 1;
+  padding: var(--ps-spacing-8) var(--ps-spacing-10);
+  max-width: 1320px;
+  overflow-y: auto;
+}
+
+/* --- Page header ------------------------------------------ */
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--ps-spacing-6);
+  flex-wrap: wrap;
+  gap: var(--ps-spacing-4);
+}
+
+.breadcrumbRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-4);
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2);
+}
+
+.toggleLabel {
+  font-size: var(--ps-font-size-sm);
+  color: var(--ps-prim-gray-700);
+  white-space: nowrap;
+}
+
+/* --- Tabs + filter bar ------------------------------------ */
+
+.tabsSection {
+  margin-bottom: var(--ps-spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-4);
+}
+
+.filterBar {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--ps-spacing-3);
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  flex: 0 0 220px;
+}
+
+.typeDropdown {
+  flex: 0 0 200px;
+}
+
+/* --- Card grid -------------------------------------------- */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ps-spacing-6);
+  margin-bottom: var(--ps-spacing-8);
+}
+
+@media (max-width: 1280px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardWrapper {
+  min-width: 0;
+}
+
+/* --- List card inner layout ------------------------------- */
+
+.listCardInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-3);
+  padding: var(--ps-spacing-5);
+  height: 100%;
+}
+
+.listCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ps-spacing-2);
+}
+
+.listName {
+  font-size: var(--ps-font-size-base);
+  font-weight: 600;
+  color: var(--ps-prim-gray-900);
+  line-height: 1.3;
+  flex: 1;
+}
+
+.moreIcon {
+  font-size: var(--ps-font-size-lg);
+  color: var(--ps-prim-gray-500);
+  cursor: pointer;
+  line-height: 1;
+  padding: var(--ps-spacing-1);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.moreIcon:hover {
+  background-color: var(--ps-prim-gray-100);
+}
+
+.listCardMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2);
+  flex-wrap: wrap;
+}
+
+.metaPrivacy {
+  font-size: var(--ps-font-size-xs);
+  color: var(--ps-prim-gray-600);
+}
+
+.listCardStats {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3);
+}
+
+.followersRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-1);
+}
+
+.followersCount {
+  font-size: var(--ps-font-size-sm);
+  color: var(--ps-prim-gray-700);
+}
+
+.listCardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-3);
+  margin-top: auto;
+}
+
+.updatedText {
+  font-size: var(--ps-font-size-xs);
+  color: var(--ps-prim-gray-500);
+}
+
+.listCardActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2);
+  justify-content: flex-end;
+}
+
+/* --- Empty state ------------------------------------------ */
+
+.emptyState {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ps-spacing-4);
+  padding: var(--ps-spacing-12);
+  color: var(--ps-prim-gray-500);
+}
+
+.emptyText {
+  font-size: var(--ps-font-size-base);
+  color: var(--ps-prim-gray-600);
+}
+
+/* --- Pagination ------------------------------------------- */
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--ps-spacing-8);
+}
+
+/* --- Create List Modal ------------------------------------ */
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-5);
+  padding: var(--ps-spacing-2) 0;
+}
+
+.modalTypeDropdown {
+  width: 100%;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ps-spacing-3);
+}
