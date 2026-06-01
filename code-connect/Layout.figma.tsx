@@ -28,12 +28,12 @@ figma.connect(AccordionCount, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ
   ),
 });
 
-figma.connect(Breadcrumb, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Breadcrumb, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4386:28732', {
   props: { items: figma.children('*') },
   example: () => <Breadcrumb items={[]} />,
 });
 
-figma.connect(BreadcrumbBack, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(BreadcrumbBack, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4386:28732', {
   props: { label: figma.string('Label') },
   example: ({ label }) => <BreadcrumbBack label={label} onClick={() => {}} />,
 });

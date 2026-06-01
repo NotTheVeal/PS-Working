@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Pagination } from '@partssource/react-kit';
 
-figma.connect(Pagination, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Pagination, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4445:12144', {
   props: {
     compact: figma.boolean('Compact'),
   },

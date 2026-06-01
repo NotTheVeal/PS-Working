@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Alert } from '@partssource/react-kit';
 
-figma.connect(Alert, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Alert, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=456:210', {
   props: {
     severity: figma.enum('Severity', {
       Success: 'success',
