@@ -1,0 +1,152 @@
+/* PieCharts.module.css
+   All colors use PS design token hex values (as CSS custom properties where
+   tokens are available, or their resolved hex equivalents per the token map). */
+
+/* ── Card shell ─────────────────────────────────────────────────────────────── */
+.card {
+  background: #ffffff;
+  border: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  border-radius: 12px;
+  padding: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 320px;
+}
+
+/* ── Section label (e.g. "DONUT CHART") ────────────────────────────────────── */
+.chartLabel {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ps-prim-blue-500, #005ba6);
+  line-height: 1;
+}
+
+/* ── Title ──────────────────────────────────────────────────────────────────── */
+.chartTitle {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ps-prim-navy-900, #002f48);
+  line-height: 1.2;
+}
+
+/* ── Horizontal body (chart + legend side by side) ──────────────────────────── */
+.body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Donut: wrapper holds chart + absolutely-centred label ──────────────────── */
+.donutWrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+}
+
+/* Center label for donut / gauge */
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.donutCenterValue {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--ps-prim-navy-900, #002f48);
+  line-height: 1.1;
+}
+
+.donutCenterSub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ps-prim-gray-500, #777777);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+/* ── Legend ─────────────────────────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendSwatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legendText {
+  font-size: 13px;
+  color: var(--ps-prim-gray-700, #4a4a4a);
+  white-space: nowrap;
+}
+
+/* ── Gauge ──────────────────────────────────────────────────────────────────── */
+.gaugeWrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+}
+
+.gaugeCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+/* ── Waffle ─────────────────────────────────────────────────────────────────── */
+.waffleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.waffleGrid {
+  display: grid;
+  grid-template-columns: repeat(10, 16px);
+  grid-template-rows: repeat(10, 16px);
+  gap: 3px;
+}
+
+.waffleCell {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.waffleMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
