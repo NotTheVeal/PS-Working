@@ -1,0 +1,16 @@
+.chartWrapper {
+  background-color: #ffffff;
+  border: 1px solid var(--ps-prim-gray-300, #dcdcdc);
+  border-radius: 12px;
+  padding: var(--ps-spacing-5, 20px);
+  width: 100%;
+}
+
+.chartTitle {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ps-prim-blue-900, #002f48);
+  margin: 0 0 var(--ps-spacing-4, 16px) 0;
+  line-height: normal;
+}
