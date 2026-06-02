@@ -9,6 +9,9 @@ import {
   AnalyticsCard,
   Accordion,
 } from "@partssource/react-kit";
+import { PSVerticalBarChart, PSStackedBarChart } from "./components/Charts";
+import { PSLineChart } from "./components/LineCharts";
+import { PSPieChart } from "./components/PieCharts";
 import styles from "./VisualAnalytics.module.css";
 
 // ---------------------------------------------------------------------------
@@ -59,25 +62,38 @@ const DATE_RANGE_OPTIONS = [
 ];
 
 // ---------------------------------------------------------------------------
-// Chart placeholder component
+// Sample chart data
 // ---------------------------------------------------------------------------
 
-interface ChartPlaceholderProps {
-  type: "bar" | "line" | "pie" | "stacked-bar";
-  height?: number;
-  label?: string;
-}
+const SPEND_TREND_DATA = [
+  { month: 'Jan', spend: 95000 }, { month: 'Feb', spend: 102000 },
+  { month: 'Mar', spend: 98000 }, { month: 'Apr', spend: 115000 },
+  { month: 'May', spend: 108000 }, { month: 'Jun', spend: 120000 },
+];
 
-// TODO: no react-kit match — approximated with <div> placeholder
-function ChartPlaceholder({ type, height = 180, label }: ChartPlaceholderProps) {
-  return (
-    <div className={styles.chartPlaceholder} style={{ height }}>
-      <span className={styles.chartPlaceholderLabel}>
-        [{type.toUpperCase()} CHART{label ? ` — ${label}` : ""}]
-      </span>
-    </div>
-  );
-}
+const PARTS_BREAKDOWN_DATA = [
+  { category: 'Q1', OEM: 40000, Aftermarket: 60000 },
+  { category: 'Q2', OEM: 45000, Aftermarket: 70000 },
+  { category: 'Q3', OEM: 38000, Aftermarket: 65000 },
+  { category: 'Q4', OEM: 50000, Aftermarket: 75000 },
+];
+
+const OEM_MIX_DATA = [
+  { name: 'OEM', value: 22 },
+  { name: 'Aftermarket', value: 78 },
+];
+
+const UPTIME_TREND_DATA = [
+  { month: 'Jan', uptime: 82 }, { month: 'Feb', uptime: 85 },
+  { month: 'Mar', uptime: 83 }, { month: 'Apr', uptime: 87 },
+  { month: 'May', uptime: 84 }, { month: 'Jun', uptime: 86 },
+];
+
+const OVERNIGHT_RATE_DATA = [
+  { month: 'Jan', rate: 10 }, { month: 'Feb', rate: 11 },
+  { month: 'Mar', rate: 9 },  { month: 'Apr', rate: 13 },
+  { month: 'May', rate: 12 }, { month: 'Jun', rate: 10 },
+];
 
 // ---------------------------------------------------------------------------
 // KPI Section: Service Budget
@@ -117,11 +133,13 @@ function ServiceBudgetSection() {
           benchmark="-3% below peer benchmark"
         />
       </div>
-      {/* TODO: no react-kit match — approximated with ChartPlaceholder (bar chart for spend trend) */}
       <div className={styles.chartRow}>
         <div className={styles.chartCard}>
-          <h3 className={styles.chartTitle}>Spend: Contracted Service</h3>
-          <ChartPlaceholder type="bar" height={200} label="Monthly Contracted Service Spend" />
+          <PSVerticalBarChart
+            title="Spend: Contracted Service"
+            data={SPEND_TREND_DATA}
+            bars={[{ dataKey: 'spend', label: 'Spend ($)' }]}
+          />
         </div>
       </div>
     </section>
@@ -166,16 +184,16 @@ function PartsManagementSection() {
           benchmark="18% below peer benchmark"
         />
       </div>
-      {/* TODO: no react-kit match — approximated with ChartPlaceholder (stacked bar for parts spend breakdown) */}
       <div className={styles.chartRow}>
         <div className={styles.chartCard}>
-          <h3 className={styles.chartTitle}>Parts Spend Breakdown</h3>
-          <ChartPlaceholder type="stacked-bar" height={200} label="Parts Spend by Category" />
+          <PSStackedBarChart
+            title="Parts Spend Breakdown"
+            data={PARTS_BREAKDOWN_DATA}
+            bars={[{ dataKey: 'OEM', label: 'OEM' }, { dataKey: 'Aftermarket', label: 'Aftermarket' }]}
+          />
         </div>
         <div className={styles.chartCard}>
-          <h3 className={styles.chartTitle}>OEM vs. Aftermarket Mix</h3>
-          {/* TODO: no react-kit match — approximated with ChartPlaceholder (pie chart) */}
-          <ChartPlaceholder type="pie" height={200} label="OEM vs Aftermarket" />
+          <PSPieChart title="OEM vs. Aftermarket Mix" data={OEM_MIX_DATA} />
         </div>
       </div>
     </section>
@@ -220,16 +238,20 @@ function ServiceOperationsSection() {
           benchmark="18% below peer benchmark"
         />
       </div>
-      {/* TODO: no react-kit match — approximated with ChartPlaceholder (line chart for uptime trend) */}
       <div className={styles.chartRow}>
         <div className={styles.chartCard}>
-          <h3 className={styles.chartTitle}>Asset Uptime Trend</h3>
-          <ChartPlaceholder type="line" height={200} label="Monthly Asset Uptime %" />
+          <PSLineChart
+            title="Asset Uptime Trend"
+            data={UPTIME_TREND_DATA}
+            lines={[{ dataKey: 'uptime', label: 'Uptime %' }]}
+          />
         </div>
         <div className={styles.chartCard}>
-          <h3 className={styles.chartTitle}>Biomed Overnight Shipping Rate</h3>
-          {/* TODO: no react-kit match — approximated with ChartPlaceholder (bar chart) */}
-          <ChartPlaceholder type="bar" height={200} label="Biomed Overnight Rate by Month" />
+          <PSVerticalBarChart
+            title="Biomed Overnight Shipping Rate"
+            data={OVERNIGHT_RATE_DATA}
+            bars={[{ dataKey: 'rate', label: 'Overnight Rate %' }]}
+          />
         </div>
       </div>
     </section>

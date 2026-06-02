@@ -13,13 +13,30 @@ import {
   ButtonInline,
   Accordion,
   AlertCard,
+
   Pagination,
   StatusCard,
   Spinner,
   FilterChip,
 } from "@partssource/react-kit";
 import DataTable, { ColumnDef, badgeCell } from "./components/DataTable";
+import { PSGroupedBarChart } from "./components/Charts";
 import styles from "./AssetUptime.module.css";
+
+const DOWNTIME_CHART_DATA = [
+  { month: 'Jan', downtime: 20, benchmark: 30, meanTime: 25 },
+  { month: 'Feb', downtime: 45, benchmark: 30, meanTime: 35 },
+  { month: 'Mar', downtime: 30, benchmark: 30, meanTime: 28 },
+  { month: 'Apr', downtime: 60, benchmark: 30, meanTime: 45 },
+  { month: 'May', downtime: 80, benchmark: 30, meanTime: 55 },
+  { month: 'Jun', downtime: 55, benchmark: 30, meanTime: 40 },
+  { month: 'Jul', downtime: 40, benchmark: 30, meanTime: 35 },
+  { month: 'Aug', downtime: 70, benchmark: 30, meanTime: 50 },
+  { month: 'Sep', downtime: 35, benchmark: 30, meanTime: 30 },
+  { month: 'Oct', downtime: 50, benchmark: 30, meanTime: 42 },
+  { month: 'Nov', downtime: 65, benchmark: 30, meanTime: 48 },
+  { month: 'Dec', downtime: 45, benchmark: 30, meanTime: 38 },
+];
 
 // ---------------------------------------------------------------------------
 // Types
@@ -323,41 +340,6 @@ function StatCard({ value, unit, label, delta, deltaLabel, deltaUp }: StatCardPr
   );
 }
 
-// ---------------------------------------------------------------------------
-// Downtime trend chart placeholder
-// TODO: no react-kit match — chart approximated with placeholder bar visual
-// ---------------------------------------------------------------------------
-
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const CHART_DATA = [20, 45, 30, 60, 80, 55, 40, 70, 35, 50, 65, 45];
-const MAX_VAL = Math.max(...CHART_DATA);
-
-function DowntrendChart() {
-  return (
-    <div className={styles.chartArea}>
-      <div className={styles.chartBars}>
-        {CHART_DATA.map((v, i) => (
-          <div key={i} className={styles.chartBarCol}>
-            <div
-              className={styles.chartBar}
-              style={{ height: `${(v / MAX_VAL) * 100}%` }}
-              aria-label={`${MONTHS[i]}: ${v} hours`}
-            />
-            <span className={styles.chartMonthLabel}>{MONTHS[i]}</span>
-          </div>
-        ))}
-      </div>
-      <div className={styles.chartLegend}>
-        <span className={styles.legendDot} style={{ background: "var(--ps-prim-blue-500)" }} />
-        <span>System Downtime</span>
-        <span className={styles.legendDot} style={{ background: "var(--ps-prim-gray-400)" }} />
-        <span>Benchmark</span>
-        <span className={styles.legendDot} style={{ background: "var(--ps-prim-orange-400)" }} />
-        <span>Mean Time</span>
-      </div>
-    </div>
-  );
-}
 
 // ---------------------------------------------------------------------------
 // Activity item — maps to AlertCard from react-kit
@@ -489,8 +471,15 @@ const AssetUptime: React.FC = () => {
           {/* ── Downtime Trends ───────────────────────────── */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Downtime Trends</h2>
-            {/* TODO: no react-kit match for chart — approximated with custom bar chart placeholder */}
-            <DowntrendChart />
+            <PSGroupedBarChart
+              title=""
+              data={DOWNTIME_CHART_DATA}
+              bars={[
+                { dataKey: 'downtime', label: 'System Downtime' },
+                { dataKey: 'benchmark', label: 'Benchmark' },
+                { dataKey: 'meanTime', label: 'Mean Time' },
+              ]}
+            />
           </section>
 
           {/* ── Activity Drawer (accordion) ───────────────── */}
