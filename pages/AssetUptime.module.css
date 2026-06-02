@@ -1,0 +1,340 @@
+/* AssetUptime — CSS Modules
+   All color values use PS design token CSS vars.
+   No raw Tailwind on wrapper/layout elements.
+   Tailwind is only allowed inside @partssource/react-kit components.
+*/
+
+/* ── Page shell ────────────────────────────────────── */
+.pageRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--ps-prim-gray-50);
+}
+
+.bodyLayout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.mainContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ps-spacing-6, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-5, 20px);
+}
+
+/* ── Top meta row (breadcrumb + refresh) ───────────── */
+.topMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pageMetaRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3, 12px);
+}
+
+.pageLastUpdated {
+  font-size: 12px;
+  color: var(--ps-prim-gray-500);
+}
+
+/* ── Asset header strip ────────────────────────────── */
+.assetHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: var(--ps-prim-white, #fff);
+  border: 1px solid var(--ps-prim-gray-200);
+  border-radius: 8px;
+  padding: var(--ps-spacing-4, 16px) var(--ps-spacing-5, 20px);
+}
+
+.assetHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-3, 12px);
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3, 12px);
+}
+
+.elapsedLabel {
+  font-size: 13px;
+  color: var(--ps-prim-gray-600);
+}
+
+.assetInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3, 12px);
+}
+
+.assetLogoPlaceholder {
+  width: 40px;
+  height: 40px;
+  background-color: var(--ps-prim-gray-200);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.assetNameBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.assetManufacturer {
+  font-size: 14px;
+  color: var(--ps-prim-gray-700);
+}
+
+.assetModel {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-900);
+}
+
+.assetStatusBar {
+  min-width: 300px;
+}
+
+/* ── Generic section ───────────────────────────────── */
+.section {
+  background: var(--ps-prim-white, #fff);
+  border: 1px solid var(--ps-prim-gray-200);
+  border-radius: 8px;
+  padding: var(--ps-spacing-5, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-4, 16px);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-800);
+  margin: 0;
+}
+
+/* ── Stat row ──────────────────────────────────────── */
+.statRow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--ps-prim-gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.statCard {
+  flex: 1;
+  padding: var(--ps-spacing-4, 16px) var(--ps-spacing-5, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-2, 8px);
+}
+
+.statDivider {
+  width: 1px;
+  background-color: var(--ps-prim-gray-200);
+  align-self: stretch;
+}
+
+.statValueRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ps-spacing-2, 8px);
+  flex-wrap: wrap;
+}
+
+.statValue {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--ps-prim-gray-900);
+  line-height: 1;
+}
+
+.statUnit {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ps-prim-gray-700);
+}
+
+.statLabel {
+  font-size: 14px;
+  color: var(--ps-prim-gray-600);
+  align-self: center;
+}
+
+.statDelta {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2, 8px);
+}
+
+.deltaChip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.deltaUp {
+  color: var(--ps-prim-red-600, #c62828);
+  background-color: var(--ps-prim-red-50, #ffebee);
+}
+
+.deltaDown {
+  color: var(--ps-prim-green-700, #1b5e20);
+  background-color: var(--ps-prim-green-50, #e8f5e9);
+}
+
+.deltaLabel {
+  font-size: 12px;
+  color: var(--ps-prim-gray-500);
+}
+
+/* ── Mean time cards ───────────────────────────────── */
+.meanTimeRow {
+  display: flex;
+  gap: var(--ps-spacing-4, 16px);
+}
+
+.meanTimeCard {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ps-spacing-2, 8px);
+  padding: var(--ps-spacing-3, 12px) var(--ps-spacing-4, 16px);
+  background: var(--ps-prim-blue-50);
+  border-radius: 6px;
+}
+
+.meanTimeValue {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--ps-prim-blue-700);
+}
+
+.meanTimeUnit {
+  font-size: 16px;
+  color: var(--ps-prim-blue-600);
+}
+
+.meanTimeLabel {
+  font-size: 13px;
+  color: var(--ps-prim-gray-600);
+}
+
+/* ── Downtime trend chart ──────────────────────────── */
+.chartArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-3, 12px);
+  padding: var(--ps-spacing-3, 12px) 0;
+}
+
+.chartBars {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--ps-spacing-2, 8px);
+  height: 120px;
+}
+
+.chartBarCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 4px;
+}
+
+.chartBar {
+  width: 100%;
+  background-color: var(--ps-prim-blue-400);
+  border-radius: 3px 3px 0 0;
+  min-height: 4px;
+  transition: height 0.3s ease;
+}
+
+.chartMonthLabel {
+  font-size: 11px;
+  color: var(--ps-prim-gray-500);
+  text-align: center;
+}
+
+.chartLegend {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-2, 8px);
+  font-size: 12px;
+  color: var(--ps-prim-gray-600);
+}
+
+.legendDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Activity list (inside accordion) ─────────────── */
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-3, 12px);
+  padding: var(--ps-spacing-4, 16px) 0;
+}
+
+/* ── Telemetry placeholder ─────────────────────────── */
+.telemetryPlaceholder {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-3, 12px);
+  padding: var(--ps-spacing-6, 24px);
+  color: var(--ps-prim-gray-500);
+  font-size: 14px;
+}
+
+.telemetryLabel {
+  color: var(--ps-prim-gray-500);
+  font-size: 14px;
+}
+
+/* ── Table footer ──────────────────────────────────── */
+.tableFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--ps-spacing-3, 12px);
+}
+
+.rowCount {
+  font-size: 13px;
+  color: var(--ps-prim-gray-500);
+}
+
+/* ── WO filter chips row ───────────────────────────── */
+.woFilters {
+  display: flex;
+  gap: var(--ps-spacing-2, 8px);
+}

@@ -1,0 +1,371 @@
+/* CommandCenter — CSS Modules
+   All color values use PS design token CSS vars.
+   No raw Tailwind on wrapper/layout elements.
+*/
+
+/* ── Page shell ──────────────────────────────────────── */
+.pageRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--ps-prim-gray-50, #f5f5f5);
+}
+
+.bodyLayout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.mainContent {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Sticky filter bar ───────────────────────────────── */
+.stickyBar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--ps-prim-gray-100, #e0e0e0);
+  box-shadow: 0 2px 4px rgba(21, 21, 21, 0.08), 0 6px 6px rgba(21, 21, 21, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--ps-spacing-3, 12px) var(--ps-spacing-5, 20px);
+}
+
+.proBadge {
+  background: var(--ps-prim-blue-500, #0056b6);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 500px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filterItems {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-4, 15px);
+  padding: 0 var(--ps-spacing-4, 15px);
+  flex-shrink: 0;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.filterLabel {
+  font-size: 16px;
+  color: var(--ps-prim-gray-500, #5c5c5c);
+  white-space: nowrap;
+}
+
+.filterValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-900, #111);
+  white-space: nowrap;
+}
+
+.filterClear {
+  font-size: 16px;
+  color: var(--ps-prim-gray-500, #5c5c5c);
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.stickyBarRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-spacing-5, 20px);
+  margin-left: auto;
+  padding: 0 var(--ps-spacing-4, 15px);
+}
+
+.autoRefreshToggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.autoRefreshLabel {
+  font-size: 14px;
+  color: var(--ps-prim-gray-900, #111);
+  white-space: nowrap;
+}
+
+/* ── Content area ────────────────────────────────────── */
+.contentArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-spacing-5, 20px);
+  padding: var(--ps-spacing-4, 15px) var(--ps-spacing-5, 20px) var(--ps-spacing-10, 40px);
+}
+
+/* ── Section: Main Actions header ────────────────────── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ps-spacing-2, 8px) var(--ps-spacing-2, 8px);
+}
+
+.sectionDate {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.24px;
+  color: var(--ps-prim-gray-900, #111);
+  margin: 0;
+}
+
+.datePickerButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--ps-prim-gray-200, #d2d2d2);
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: var(--ps-prim-gray-900, #111);
+  background: #fff;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+/* ── KPI cards row ───────────────────────────────────── */
+.kpiRow {
+  display: flex;
+  gap: var(--ps-spacing-5, 20px);
+  align-items: stretch;
+}
+
+.kpiCard {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  box-shadow: 0 2px 8px -2px rgba(21, 21, 21, 0.08), 0 6px 12px -2px rgba(21, 21, 21, 0.08);
+  background: #fff;
+  overflow: hidden;
+  height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.kpiCardContent {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 30px 10px 0 20px;
+  flex: 1;
+}
+
+.kpiNumber {
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ps-prim-gray-900, #111);
+  margin: 0;
+}
+
+.kpiLabel {
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--ps-prim-gray-900, #111);
+  margin: 0;
+  letter-spacing: -0.32px;
+}
+
+.kpiViewLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--ps-prim-gray-500, #5c5c5c);
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  align-self: flex-end;
+  background: none;
+  border: none;
+}
+
+/* ── Operational Activity card ───────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: var(--ps-spacing-4, 15px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  gap: var(--ps-spacing-4, 15px);
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--ps-prim-gray-900, #111);
+  margin: 0;
+}
+
+/* ── Pill toggle (All / 5 Day) ──────────────────────── */
+.pillToggle {
+  display: flex;
+  background: var(--ps-prim-gray-100, #f0f0f0);
+  border-radius: 500px;
+  padding: 2px;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.pillToggleBtn {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 500px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ps-prim-gray-500, #5c5c5c);
+}
+
+.pillToggleBtnActive {
+  background: var(--ps-prim-blue-500, #0056b6);
+  color: #fff;
+}
+
+/* ── Activity columns grid ───────────────────────────── */
+.activityColumns {
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  padding: 0 10px;
+  font-size: 14px;
+  letter-spacing: -0.14px;
+}
+
+.activityStack {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: var(--ps-prim-gray-100, #f0f0f0);
+  padding: 5px;
+}
+
+.activityRowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: var(--ps-prim-gray-100, #f0f0f0);
+  font-weight: 600;
+  color: var(--ps-prim-gray-900, #111);
+}
+
+.activityRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid var(--ps-prim-gray-200, #d2d2d2);
+  color: var(--ps-prim-gray-900, #111);
+}
+
+.activityValueNeutral {
+  color: var(--ps-prim-gray-500, #5c5c5c);
+  text-align: right;
+}
+
+.activityValueCritical {
+  color: var(--ps-prim-red-600, #d62700);
+  text-align: right;
+}
+
+.activityValueNormal {
+  color: var(--ps-prim-gray-900, #111);
+  text-align: right;
+}
+
+/* ── Order detail tables section ─────────────────────── */
+.orderTablesRow {
+  display: flex;
+  gap: var(--ps-spacing-5, 20px);
+  align-items: flex-start;
+}
+
+.orderTableCard {
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.orderTableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--ps-prim-gray-100, #f0f0f0);
+}
+
+.orderTableTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-900, #111);
+  margin: 0;
+}
+
+.orderTableViewAll {
+  font-size: 13px;
+  color: var(--ps-prim-blue-500, #0056b6);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ── Analytics cards row ─────────────────────────────── */
+.analyticsRow {
+  display: flex;
+  gap: var(--ps-spacing-5, 20px);
+  align-items: stretch;
+}
+
+.analyticsCard {
+  flex: 1;
+  min-width: 0;
+}

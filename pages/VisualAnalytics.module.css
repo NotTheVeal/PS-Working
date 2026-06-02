@@ -1,0 +1,196 @@
+/* VisualAnalytics.module.css
+   All layout/composition code. No Tailwind, no hardcoded hex.
+   Colors use var(--ps-prim-*) design tokens.
+   Spacing uses the PS token scale (--spacing/*). */
+
+/* ─── Page shell ─────────────────────────────────────────────────── */
+
+.pageRoot {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--ps-prim-gray-50, #fafafa);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── Page header ────────────────────────────────────────────────── */
+
+.pageHeader {
+  padding: 20px 24px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid var(--ps-prim-gray-200, #e0e0e0);
+  background-color: var(--ps-prim-gray-50, #fafafa);
+}
+
+.pageTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-900, #1a1a1a);
+  margin: 0;
+}
+
+/* ─── Filter bar ─────────────────────────────────────────────────── */
+
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--ps-prim-gray-50, #fafafa);
+  border-bottom: 1px solid var(--ps-prim-gray-200, #dcdcdc);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.filterControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  background-color: var(--ps-prim-gray-0, #ffffff);
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+/* ─── Content area ───────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* ─── Actionable Events ──────────────────────────────────────────── */
+
+.actionableSection {
+  width: 100%;
+}
+
+.actionableContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.actionableText {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ps-prim-gray-700, #4a4a4a);
+  line-height: 1.5;
+}
+
+/* ─── KPI sections ───────────────────────────────────────────────── */
+
+.kpiSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-800, #2e2e2e);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ps-prim-gray-200, #e0e0e0);
+}
+
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .kpiRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .kpiRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Chart area ─────────────────────────────────────────────────── */
+
+.chartRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .chartRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartCard {
+  background-color: var(--ps-prim-gray-0, #ffffff);
+  border: 1px solid var(--ps-prim-gray-200, #e0e0e0);
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chartTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ps-prim-gray-700, #5c5c5c);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Chart placeholder ──────────────────────────────────────────── */
+
+/* TODO: Remove when real chart library is integrated */
+.chartPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ps-prim-gray-100, #f0f0f0);
+  border: 1px dashed var(--ps-prim-gray-300, #cccccc);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.chartPlaceholderLabel {
+  font-size: 12px;
+  color: var(--ps-prim-gray-500, #8c8c8c);
+  font-style: italic;
+  text-align: center;
+  padding: 0 16px;
+}
