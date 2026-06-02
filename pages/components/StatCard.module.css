@@ -1,0 +1,16 @@
+.card {
+  background: var(--ps-prim-gray-0);
+  border: 1px solid var(--ps-prim-gray-200);
+  border-radius: 6px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+}
+.label    { font-size: 13px; color: var(--ps-prim-gray-600); font-weight: 500; }
+.valueRow { display: flex; align-items: baseline; gap: 4px; }
+.value    { font-size: 32px; font-weight: 700; color: var(--ps-prim-gray-900); line-height: 1.1; }
+.unit     { font-size: 14px; color: var(--ps-prim-gray-600); }
+.delta    { font-size: 13px; font-weight: 600; }
+.sublabel { font-size: 12px; color: var(--ps-prim-gray-500); margin-top: 4px; }
