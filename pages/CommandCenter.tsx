@@ -8,6 +8,7 @@ import {
   Dropdown,
 } from "@partssource/react-kit";
 import DataTable, { ColumnDef } from "./components/DataTable";
+import PillToggle from "./components/PillToggle";
 import styles from "./CommandCenter.module.css";
 
 // ---------------------------------------------------------------------------
@@ -205,32 +206,20 @@ const EXCHANGE_COLUMNS: ColumnDef<ExchangeReturnRow>[] = [
 // Sub-components
 // ---------------------------------------------------------------------------
 
-/** All / 5 Day pill toggle — no direct react-kit match */
-// TODO: no react-kit match for inline pill toggle — approximated with styled <button>
+const PERIOD_OPTIONS = [
+  { value: 'all' as const, label: 'All' },
+  { value: '5day' as const, label: '5 Day' },
+];
+
 function PeriodToggle({
   active,
   onChange,
 }: {
-  active: "all" | "5day";
-  onChange: (v: "all" | "5day") => void;
+  active: 'all' | '5day';
+  onChange: (v: 'all' | '5day') => void;
 }) {
   return (
-    <div className={styles.pillToggle}>
-      <button
-        type="button"
-        className={`${styles.pillToggleBtn} ${active === "all" ? styles.pillToggleBtnActive : ""}`}
-        onClick={() => onChange("all")}
-      >
-        All
-      </button>
-      <button
-        type="button"
-        className={`${styles.pillToggleBtn} ${active === "5day" ? styles.pillToggleBtnActive : ""}`}
-        onClick={() => onChange("5day")}
-      >
-        5 Day
-      </button>
-    </div>
+    <PillToggle options={PERIOD_OPTIONS} value={active} onChange={onChange} />
   );
 }
 
