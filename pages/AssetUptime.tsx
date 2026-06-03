@@ -21,6 +21,7 @@ import {
 } from "@partssource/react-kit";
 import DataTable, { ColumnDef, badgeCell } from "./components/DataTable";
 import { PSGroupedBarChart } from "./components/Charts";
+import StatCard from "./components/StatCard";
 import styles from "./AssetUptime.module.css";
 
 const DOWNTIME_CHART_DATA = [
@@ -311,34 +312,6 @@ const ORDER_HISTORY_COLUMNS: ColumnDef<OrderHistoryRow>[] = [
 // TODO: no react-kit match — approximated with custom div using CSS Modules
 // ---------------------------------------------------------------------------
 
-interface StatCardProps {
-  value: string;
-  unit?: string;
-  label: string;
-  delta?: string;
-  deltaLabel?: string;
-  deltaUp?: boolean;
-}
-
-function StatCard({ value, unit, label, delta, deltaLabel, deltaUp }: StatCardProps) {
-  return (
-    <div className={styles.statCard}>
-      <div className={styles.statValueRow}>
-        <span className={styles.statValue}>{value}</span>
-        {unit && <span className={styles.statUnit}>{unit}</span>}
-        <span className={styles.statLabel}>{label}</span>
-      </div>
-      {delta && (
-        <div className={styles.statDelta}>
-          <span className={`${styles.deltaChip} ${deltaUp ? styles.deltaUp : styles.deltaDown}`}>
-            {deltaUp ? "▲" : "▼"} {delta}
-          </span>
-          <span className={styles.deltaLabel}>{deltaLabel}</span>
-        </div>
-      )}
-    </div>
-  );
-}
 
 
 // ---------------------------------------------------------------------------
@@ -427,30 +400,11 @@ const AssetUptime: React.FC = () => {
 
             {/* Stat cards */}
             <div className={styles.statRow}>
-              <StatCard
-                value="100"
-                unit="Hours"
-                label="Avg cumulative downtime per asset"
-                delta="5.2%"
-                deltaLabel="vs last month"
-                deltaUp
-              />
+              <StatCard value="100" unit="Hours" label="Avg cumulative downtime per asset" delta="5.2% vs last month" trend="up" />
               <div className={styles.statDivider} />
-              <StatCard
-                value="$400,000"
-                label="Downtime Costs"
-                delta="20%"
-                deltaLabel="percentile"
-                deltaUp
-              />
+              <StatCard value="$400,000" label="Downtime Costs" delta="20th percentile" trend="up" />
               <div className={styles.statDivider} />
-              <StatCard
-                value="$1,000"
-                label="Avg Downtime Cost per Hour"
-                delta="15%"
-                deltaLabel="vs last month"
-                deltaUp={false}
-              />
+              <StatCard value="$1,000" label="Avg Downtime Cost per Hour" delta="15% vs last month" trend="down" />
             </div>
 
             {/* Mean time callout */}

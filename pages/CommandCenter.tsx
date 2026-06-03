@@ -4,11 +4,11 @@ import {
   LeftNav,
   Toggle,
   StatusBadge,
-  AnalyticsCard,
   Dropdown,
 } from "@partssource/react-kit";
 import DataTable, { ColumnDef } from "./components/DataTable";
 import PillToggle from "./components/PillToggle";
+import StatCard from "./components/StatCard";
 import styles from "./CommandCenter.module.css";
 
 // ---------------------------------------------------------------------------
@@ -407,20 +407,11 @@ const CommandCenter: React.FC = () => {
             </div>
 
             {/* ── KPI cards ──────────────────────────────────── */}
-            {/* TODO: AnalyticsCard does not expose a "big number + label" hero variant — using layout:square and overriding */}
             <div className={styles.kpiRow}>
-              <div className={styles.analyticsCard}>
-                <AnalyticsCard title="Parts" value="9" layout="square" />
-              </div>
-              <div className={styles.analyticsCard}>
-                <AnalyticsCard title="Service Requests" value="3" layout="square" />
-              </div>
-              <div className={styles.analyticsCard}>
-                <AnalyticsCard title="Quotes" value="4" layout="square" />
-              </div>
-              <div className={styles.analyticsCard}>
-                <AnalyticsCard title="Total Spend (YTD)" value="$14,320" layout="square" />
-              </div>
+              <StatCard label="Parts" value={9} />
+              <StatCard label="Service Requests" value={3} />
+              <StatCard label="Quotes" value={4} />
+              <StatCard label="Total Spend (YTD)" value="$14,320" />
             </div>
 
             {/* ── Operational Activity ───────────────────────── */}
