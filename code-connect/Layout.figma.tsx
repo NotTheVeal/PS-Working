@@ -17,6 +17,7 @@ figma.connect(Accordion, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?no
   ),
 });
 
+// TODO: no dedicated AccordionCount frame in Figma design system; file-root fallback
 figma.connect(AccordionCount, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
   props: {
     title: figma.string('Title'),

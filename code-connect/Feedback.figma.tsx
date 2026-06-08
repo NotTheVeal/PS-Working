@@ -41,6 +41,7 @@ figma.connect(EmptyState, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?n
   example: ({ title, message }) => <EmptyState title={title} message={message} />,
 });
 
+// TODO: Figma "Error Message" page (4985:130) covers form validation only; ErrorPage full-page component has no Figma node
 figma.connect(ErrorPage, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
   props: { title: figma.string('Title'), message: figma.string('Message') },
   example: ({ title, message }) => <ErrorPage title={title} message={message} />,

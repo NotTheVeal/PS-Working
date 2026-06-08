@@ -13,6 +13,7 @@ figma.connect(StatusCard, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?n
   example: ({ title }) => <StatusCard title={title} />,
 });
 
+// TODO: no dedicated AlertCard component frame in Figma — uses inline examples only; file-root fallback
 figma.connect(AlertCard, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
   props: { title: figma.string('Title') },
   example: ({ title }) => <AlertCard title={title} />,
