@@ -11,7 +11,7 @@ figma.connect(Avatar, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-
   example: ({ size, src, name }) => <Avatar size={size} src={src} name={name} />,
 });
 
-figma.connect(AvatarGroup, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(AvatarGroup, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4485:134', {
   props: { size: figma.enum('Size', { SM: 'sm', MD: 'md', LG: 'lg' }) },
   example: ({ size }) => <AvatarGroup size={size} avatars={[]} />,
 });
