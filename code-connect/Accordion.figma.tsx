@@ -2,7 +2,7 @@ import React from 'react';
 import figma from '@figma/code-connect';
 import { Accordion } from '@partssource/react-kit';
 
-figma.connect(Accordion, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(Accordion, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4390:39583', {
   props: {
     title: figma.string('Title'),
     subtitle: figma.string('Subtitle'),

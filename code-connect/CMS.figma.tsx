@@ -1,5 +1,6 @@
 import React from 'react';
 import figma from '@figma/code-connect';
+// TODO: No dedicated CMS page exists in the design system file. Connections point to the file root.
 import { Banner, ImageBlock, TextBlock, CardGrid } from '@partssource/react-kit';
 
 figma.connect(Banner, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
