@@ -17,15 +17,13 @@ figma.connect(Accordion, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?no
   ),
 });
 
-// TODO: no dedicated AccordionCount frame in Figma design system; file-root fallback
-figma.connect(AccordionCount, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q', {
+figma.connect(AccordionCount, 'https://www.figma.com/design/pyZ5wKN9KGBUfgi47UwQ0q?node-id=4390:39583', {
   props: {
-    title: figma.string('Title'),
-    count: figma.string('Count'),
-    children: figma.children('*'),
+    tone: figma.enum('Variant', { Default: 'info', Filled: 'critical' }),
+    children: figma.string('Count'),
   },
-  example: ({ title, count, children }) => (
-    <AccordionCount title={title} count={count}>{children}</AccordionCount>
+  example: ({ tone, children }) => (
+    <AccordionCount tone={tone}>{children}</AccordionCount>
   ),
 });
 
