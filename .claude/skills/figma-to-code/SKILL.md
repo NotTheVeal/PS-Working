@@ -59,8 +59,22 @@ The response contains:
 - **`code`** — Figma-generated reference code. Treat this as a **starting scaffold, not finished
   output**. It will have raw hex values, pixel literals, and generic HTML — your job is to replace
   all of that with PS Design Library tokens and patterns.
-- **`assets`** — JSON map of asset names → download URLs. Use `Bash` + `curl` to download any
-  icons, images, or SVGs you need.
+  - If `code` is absent and only metadata is returned (happens when the node is very large),
+    retry with `forceCode: true` to get the full code regardless of size.
+- **`assets`** — JSON map of `{ "asset-name": "https://…" }` download URLs for every image,
+  icon, or SVG referenced in the generated code. Download all of them before writing the
+  component:
+  ```bash
+  mkdir -p src/assets/figma
+  # For each asset URL in the map:
+  curl -sL "<asset_url>" -o "src/assets/figma/<asset-name>.svg"
+  ```
+  Then import them in the component:
+  ```tsx
+  import iconName from '../../assets/figma/icon-name.svg'
+  ```
+  If the project has a different asset convention (e.g. Storybook `public/` folder or an icon
+  component library), place assets there instead and note it in the summary.
 - **`screenshot`** — a short-lived PNG URL. Download it immediately:
   ```bash
   curl -sL "<screenshot_url>" -o /tmp/figma-reference.png
@@ -135,6 +149,19 @@ Skip the confirmation step only if the user said "just do it" or equivalent.
 ---
 
 ## Step 5 — Implement
+
+### Choosing a starting template
+
+Pick from `.claude/skills/figma-to-code/templates/` before writing:
+
+| Template | When to use |
+|----------|-------------|
+| `base.tsx` | Single visual state, no variant axis, no interactive slots |
+| `with-variants.tsx` | Two or more variant axes (variant + size, color + shape, etc.) |
+| `with-slots.tsx` | Has icon/leading/trailing/loading slots alongside variant logic |
+
+Copy the template, rename `ComponentName` throughout, then fill in the Tailwind classes
+from your token mapping table. Do not start from a blank file.
 
 ### Component (`<Name>.tsx`)
 
