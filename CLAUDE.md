@@ -73,6 +73,23 @@ dated report to `.claude/audit/`. Offers to kick off follow-up skills for any ga
 visual spec, and creates or updates the Figma component via the Plugin API — Auto Layout,
 variants, component properties, correct colors and typography.
 
+### `/ps-accessibility <component-name>`
+**Accessibility audit.** WCAG 2.1 AA check covering ARIA semantics, keyboard navigation,
+focus visibility, color contrast (pre-calculated for all PS tokens), form labelling, dynamic
+content announcements, and disabled state patterns. Produces a prioritised findings report
+and can auto-apply P0/P1 fixes.
+
+### `/ps-react-patterns <component-name>`
+**Engineering quality audit.** Checks forwardRef + displayName, named exports, TypeScript
+correctness, cva usage, prop API design, composition patterns, performance (memo, stable
+callbacks), event handling, and testability. Applies fixes automatically if approved.
+
+### `/ps-design-review <component-name> [figma-url]`
+**Visual QA.** Checks for hardcoded values, spacing consistency, visual hierarchy, all
+interactive states (hover, focus, active, disabled, loading, error), border/radius token
+usage, typography compliance, responsive behaviour, and Storybook coverage. If a Figma URL
+is provided, does a direct pixel comparison against the reference screenshot.
+
 ---
 
 ## Workflow

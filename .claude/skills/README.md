@@ -5,7 +5,7 @@ a Claude Code session pointed at this repo.
 
 ---
 
-## The five skills
+## The eight skills
 
 ### `/figma-audit <figma-file-url>`
 **Start here.** Run at the beginning of every sprint.
@@ -79,6 +79,45 @@ and correct fills.
 
 ```
 /figma-push Button https://figma.com/design/ABC123/PS-Design-Library
+```
+
+### `/ps-accessibility <component-name>`
+**Run before every PR merge.**
+
+Audits ARIA roles, keyboard navigation, focus rings, color contrast (pre-calculated for all
+PS tokens), form labelling, dynamic content, and disabled states. Classifies findings as
+P0 Blocker / P1 Critical / P2 Major / P3 Minor. Can auto-apply P0+P1 fixes.
+
+```
+/ps-accessibility Button
+/ps-accessibility src/components/
+```
+
+---
+
+### `/ps-react-patterns <component-name>`
+**Engineering quality review.**
+
+Checks forwardRef + displayName, TypeScript correctness, cva usage, prop API design,
+composition vs configuration, performance (stable callbacks, memo), and testability.
+
+```
+/ps-react-patterns Card
+/ps-react-patterns src/components/
+```
+
+---
+
+### `/ps-design-review <component-name> [figma-url]`
+**Visual QA — catches design drift before it ships.**
+
+Greps for hardcoded hex/px values, checks all interactive states exist, verifies token
+usage, spacing, typography, and Storybook coverage. With a Figma URL, does a direct
+pixel comparison against the reference screenshot.
+
+```
+/ps-design-review Button
+/ps-design-review Button https://figma.com/design/ABC123/...?node-id=1-23
 ```
 
 ---
