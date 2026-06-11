@@ -1,6 +1,19 @@
 // PS Design Library — component exports
-// Components are added here as they are built via /figma-to-code
 
+// Tokens & utilities
 export { tokens, FOCUS_RING, DISABLED } from './tokens/tokens'
 export type { ColorToken, SpacingToken, RadiusToken, ShadowToken, FontSizeToken } from './tokens/tokens'
 export { cn } from './lib/cn'
+
+// Components
+export { Button } from './components/Button/Button'
+export type { ButtonProps } from './components/Button/Button'
+
+export { Card, CardHeader, CardBody, CardFooter, CardDivider } from './components/Card/Card'
+export type { CardProps, CardHeaderProps, CardFooterProps } from './components/Card/Card'
+
+export { Badge } from './components/Badge/Badge'
+export type { BadgeProps } from './components/Badge/Badge'
+
+export { Input } from './components/Input/Input'
+export type { InputProps } from './components/Input/Input'
