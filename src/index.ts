@@ -15,5 +15,14 @@ export type { CardProps, CardHeaderProps, CardFooterProps } from './components/C
 export { Badge } from './components/Badge/Badge'
 export type { BadgeProps } from './components/Badge/Badge'
 
+export { Banner } from './components/Banner/Banner'
+export type { BannerProps } from './components/Banner/Banner'
+
+export { Chip } from './components/Chip/Chip'
+export type { ChipProps } from './components/Chip/Chip'
+
 export { Input } from './components/Input/Input'
 export type { InputProps } from './components/Input/Input'
+
+export { Select } from './components/Select/Select'
+export type { SelectProps, SelectOption } from './components/Select/Select'
