@@ -60,3 +60,29 @@ export type { ModalProps }     from './components/Modal/Modal'
 
 export { Tooltip }             from './components/Tooltip/Tooltip'
 export type { TooltipProps }   from './components/Tooltip/Tooltip'
+
+// Display (wave 5)
+export { Avatar, AvatarGroup }                from './components/Avatar/Avatar'
+export type { AvatarProps, AvatarGroupProps } from './components/Avatar/Avatar'
+
+export { Skeleton, SkeletonCard, SkeletonTable } from './components/Skeleton/Skeleton'
+export type { SkeletonProps }                    from './components/Skeleton/Skeleton'
+
+// Forms (wave 5)
+export { Switch }              from './components/Switch/Switch'
+export type { SwitchProps }    from './components/Switch/Switch'
+
+// Layout (wave 5)
+export { Accordion, AccordionItem } from './components/Accordion/Accordion'
+export type { AccordionProps, AccordionItemProps } from './components/Accordion/Accordion'
+
+// Navigation (wave 5)
+export { Breadcrumb }              from './components/Breadcrumb/Breadcrumb'
+export type { BreadcrumbProps }    from './components/Breadcrumb/Breadcrumb'
+
+export { Pagination }              from './components/Pagination/Pagination'
+export type { PaginationProps }    from './components/Pagination/Pagination'
+
+// Feedback (wave 5)
+export { Progress }                from './components/Progress/Progress'
+export type { ProgressProps }      from './components/Progress/Progress'
