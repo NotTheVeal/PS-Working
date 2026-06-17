@@ -1,0 +1,80 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{ts,tsx}',
+    './.storybook/**/*.{ts,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // PS Design Library — primary palette
+        'ps-text':        '#1a1a1a',
+        'ps-text-2':      '#4a4a4a',
+        'ps-text-muted':  '#6b6b6b',
+        'ps-text-subtle': '#aaaaaa',
+        'ps-brand':       '#d97757',
+        'ps-brand-dark':  '#c4663f',
+        'ps-blue':        '#1a56b0',
+        'ps-blue-dark':   '#1446a0',
+        'ps-blue-light':  '#e8f0fe',
+        'ps-green':       '#1a6b3a',
+        'ps-green-light': '#d4edda',
+        'ps-red':         '#9b2c2c',
+        'ps-red-light':   '#fde8e8',
+        'ps-page-bg':     '#f0ede8',
+        'ps-surface':     '#ffffff',
+        'ps-border':      '#e0ddd6',
+        'ps-border-strong': '#d0cdc5',
+        // States
+        'ps-error':       '#e53e3e',
+        'ps-warning':     '#d97706',
+        'ps-success':     '#1a6b3a',
+        'ps-info':        '#1a56b0',
+      },
+      fontFamily: {
+        sans: ['-apple-system', 'BlinkMacSystemFont', "'Segoe UI'", 'Helvetica', 'Arial', 'sans-serif'],
+        mono: ["'SFMono-Regular'", 'Consolas', "'Liberation Mono'", 'Menlo', 'monospace'],
+      },
+      fontSize: {
+        'ps-caption': ['12px', { lineHeight: '1.55', fontWeight: '400' }],
+        'ps-label':   ['11px', { lineHeight: '1.4',  fontWeight: '600', letterSpacing: '0.06em' }],
+        'ps-small':   ['13px', { lineHeight: '1.55', fontWeight: '400' }],
+        'ps-body':    ['14px', { lineHeight: '1.6',  fontWeight: '400' }],
+        'ps-body-md': ['15px', { lineHeight: '1.6',  fontWeight: '400' }],
+        'ps-h4':      ['16px', { lineHeight: '1.4',  fontWeight: '600' }],
+        'ps-h3':      ['18px', { lineHeight: '1.35', fontWeight: '600' }],
+        'ps-h2':      ['22px', { lineHeight: '1.3',  fontWeight: '700' }],
+        'ps-h1':      ['28px', { lineHeight: '1.25', fontWeight: '700' }],
+      },
+      borderRadius: {
+        'ps-sm':   '4px',
+        'ps-md':   '6px',
+        'ps-lg':   '8px',
+        'ps-card': '10px',
+        'ps-xl':   '12px',
+        'ps-pill': '9999px',
+      },
+      boxShadow: {
+        'ps-sm':   '0 1px 2px rgba(0, 0, 0, 0.06)',
+        'ps-md':   '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
+        'ps-card': '0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)',
+        'ps-lg':   '0 4px 16px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06)',
+        'ps-focus': '0 0 0 3px rgba(26, 86, 176, 0.25)',
+      },
+      spacing: {
+        '4.5': '18px',
+        '13':  '52px',
+        '15':  '60px',
+        '18':  '72px',
+        '22':  '88px',
+        '26':  '104px',
+        '30':  '120px',
+      },
+      ringColor: {
+        'ps-focus': '#1a56b0',
+      },
+    },
+  },
+  plugins: [],
+}
