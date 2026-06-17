@@ -86,3 +86,19 @@ export type { PaginationProps }    from './components/Pagination/Pagination'
 // Feedback (wave 5)
 export { Progress }                from './components/Progress/Progress'
 export type { ProgressProps }      from './components/Progress/Progress'
+
+// Wave 6
+export { DropdownMenu }                from './components/DropdownMenu/DropdownMenu'
+export type { DropdownMenuProps, DropdownMenuItemProps } from './components/DropdownMenu/DropdownMenu'
+
+export { Combobox }                from './components/Combobox/Combobox'
+export type { ComboboxProps, ComboboxOption } from './components/Combobox/Combobox'
+
+export { EmptyState }              from './components/EmptyState/EmptyState'
+export type { EmptyStateProps }    from './components/EmptyState/EmptyState'
+
+export { Stepper }                 from './components/Stepper/Stepper'
+export type { StepperProps, StepperStep } from './components/Stepper/Stepper'
+
+export { FileUpload }              from './components/FileUpload/FileUpload'
+export type { FileUploadProps }    from './components/FileUpload/FileUpload'
