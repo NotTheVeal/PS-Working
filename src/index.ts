@@ -87,7 +87,7 @@ export type { PaginationProps }    from './components/Pagination/Pagination'
 export { Progress }                from './components/Progress/Progress'
 export type { ProgressProps }      from './components/Progress/Progress'
 
-// Wave 6
+// Wave 6 — actions/navigation/display
 export { DropdownMenu }                from './components/DropdownMenu/DropdownMenu'
 export type { DropdownMenuProps, DropdownMenuItemProps } from './components/DropdownMenu/DropdownMenu'
 
@@ -102,3 +102,19 @@ export type { StepperProps, StepperStep } from './components/Stepper/Stepper'
 
 export { FileUpload }              from './components/FileUpload/FileUpload'
 export type { FileUploadProps }    from './components/FileUpload/FileUpload'
+
+// Wave 7
+export { Alert }                   from './components/Alert/Alert'
+export type { AlertProps }         from './components/Alert/Alert'
+
+export { NumberInput }             from './components/NumberInput/NumberInput'
+export type { NumberInputProps }   from './components/NumberInput/NumberInput'
+
+export { SegmentedControl }        from './components/SegmentedControl/SegmentedControl'
+export type { SegmentedControlProps, SegmentedOption } from './components/SegmentedControl/SegmentedControl'
+
+export { Drawer }                  from './components/Drawer/Drawer'
+export type { DrawerProps }        from './components/Drawer/Drawer'
+
+export { Timeline }                from './components/Timeline/Timeline'
+export type { TimelineProps, TimelineEvent } from './components/Timeline/Timeline'
