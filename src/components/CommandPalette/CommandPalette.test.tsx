@@ -92,36 +92,40 @@ describe('CommandPalette', () => {
     expect(screen.getByText('No results found')).toBeInTheDocument()
   })
 
-  it('calls onClose when Escape is pressed', async () => {
+  it('calls onClose when Escape is pressed', () => {
     const onClose = vi.fn()
-    const user = userEvent.setup()
     render(<CommandPalette open={true} onClose={onClose} items={makeItems()} />)
-    await user.keyboard('{Escape}')
+    const input = screen.getByRole('combobox')
+    input.focus()
+    fireEvent.keyDown(input, { key: 'Escape', code: 'Escape' })
     expect(onClose).toHaveBeenCalledOnce()
   })
 
-  it('calls onSelect and onClose when Enter is pressed on active item', async () => {
+  it('calls onSelect and onClose when Enter is pressed on active item', () => {
     const onClose = vi.fn()
     const items = makeItems()
-    const user = userEvent.setup()
     render(<CommandPalette open={true} onClose={onClose} items={items} />)
-    await user.keyboard('{Enter}')
+    const input = screen.getByRole('combobox')
+    input.focus()
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' })
     expect(items[0].onSelect).toHaveBeenCalledOnce()
     expect(onClose).toHaveBeenCalledOnce()
   })
 
   it('moves selection down with ArrowDown', async () => {
-    const user = userEvent.setup()
     render(<CommandPalette open={true} onClose={vi.fn()} items={makeItems()} />)
-    await user.keyboard('{ArrowDown}')
+    const input = screen.getByRole('combobox')
+    input.focus()
+    fireEvent.keyDown(input, { key: 'ArrowDown', code: 'ArrowDown' })
     const options = screen.getAllByRole('option')
     expect(options[1]).toHaveAttribute('aria-selected', 'true')
   })
 
   it('moves selection up with ArrowUp and wraps', async () => {
-    const user = userEvent.setup()
     render(<CommandPalette open={true} onClose={vi.fn()} items={makeItems()} />)
-    await user.keyboard('{ArrowUp}')
+    const input = screen.getByRole('combobox')
+    input.focus()
+    fireEvent.keyDown(input, { key: 'ArrowUp', code: 'ArrowUp' })
     const options = screen.getAllByRole('option')
     // wraps to last
     expect(options[options.length - 1]).toHaveAttribute('aria-selected', 'true')
