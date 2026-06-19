@@ -169,3 +169,6 @@ export type { CarouselProps }      from './components/Carousel/Carousel'
 
 export { OTPInput }                from './components/OTPInput/OTPInput'
 export type { OTPInputProps }      from './components/OTPInput/OTPInput'
+
+export { Kbd, Shortcut }           from './components/Kbd/Kbd'
+export type { KbdProps }           from './components/Kbd/Kbd'

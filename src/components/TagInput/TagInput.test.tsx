@@ -102,7 +102,8 @@ describe('TagInput', () => {
     await userEvent.type(input, 'notanemail')
     await userEvent.keyboard('{Enter}')
     expect(validate).toHaveBeenCalledWith('notanemail')
-    expect(await screen.findByText(/"notanemail": Not a valid email/)).toBeInTheDocument()
+    expect(await screen.findByRole('alert')).toBeInTheDocument()
+    expect(screen.getByRole('alert').textContent).toMatch(/notanemail.*Not a valid email/)
   })
 
   it('accepts valid tag when validate returns true', async () => {
