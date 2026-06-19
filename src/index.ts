@@ -144,3 +144,16 @@ export type { CopyButtonProps }    from './components/CopyButton/CopyButton'
 
 export { ToggleButton }            from './components/ToggleButton/ToggleButton'
 export type { ToggleButtonProps }  from './components/ToggleButton/ToggleButton'
+
+// Wave 9
+export { TreeView }                from './components/TreeView/TreeView'
+export type { TreeViewProps, TreeNode } from './components/TreeView/TreeView'
+
+export { TagInput }                from './components/TagInput/TagInput'
+export type { TagInputProps }      from './components/TagInput/TagInput'
+
+export { Kbd, Shortcut }           from './components/Kbd/Kbd'
+export type { KbdProps, ShortcutProps } from './components/Kbd/Kbd'
+
+export { Divider }                 from './components/Divider/Divider'
+export type { DividerProps }       from './components/Divider/Divider'
