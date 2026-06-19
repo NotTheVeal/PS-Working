@@ -157,3 +157,15 @@ export type { KbdProps, ShortcutProps } from './components/Kbd/Kbd'
 
 export { Divider }                 from './components/Divider/Divider'
 export type { DividerProps }       from './components/Divider/Divider'
+
+export { DatePicker }              from './components/DatePicker/DatePicker'
+export type { DatePickerProps }    from './components/DatePicker/DatePicker'
+
+export { Popover }                 from './components/Popover/Popover'
+export type { PopoverProps }       from './components/Popover/Popover'
+
+export { Carousel }                from './components/Carousel/Carousel'
+export type { CarouselProps }      from './components/Carousel/Carousel'
+
+export { OTPInput }                from './components/OTPInput/OTPInput'
+export type { OTPInputProps }      from './components/OTPInput/OTPInput'
