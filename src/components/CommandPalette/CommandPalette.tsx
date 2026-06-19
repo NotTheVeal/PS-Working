@@ -110,7 +110,9 @@ export const CommandPalette = React.forwardRef<HTMLDivElement, CommandPalettePro
       const list = listboxRef.current
       if (!list) return
       const activeEl = list.querySelector('[aria-selected="true"]')
-      activeEl?.scrollIntoView({ block: 'nearest' })
+      if (activeEl && typeof (activeEl as Element & { scrollIntoView?: unknown }).scrollIntoView === 'function') {
+        ;(activeEl as Element).scrollIntoView({ block: 'nearest' })
+      }
     }, [activeIndex])
 
     const handleKeyDown = React.useCallback(
