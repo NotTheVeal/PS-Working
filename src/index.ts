@@ -118,3 +118,29 @@ export type { DrawerProps }        from './components/Drawer/Drawer'
 
 export { Timeline }                from './components/Timeline/Timeline'
 export type { TimelineProps, TimelineEvent } from './components/Timeline/Timeline'
+
+// Wave 8 — forms
+export { RangeSlider }             from './components/RangeSlider/RangeSlider'
+export type { RangeSliderProps }   from './components/RangeSlider/RangeSlider'
+
+export { Rating }                  from './components/Rating/Rating'
+export type { RatingProps }        from './components/Rating/Rating'
+
+export { MultiSelect }             from './components/MultiSelect/MultiSelect'
+export type { MultiSelectProps, MultiSelectOption } from './components/MultiSelect/MultiSelect'
+
+export { SearchInput }             from './components/SearchInput/SearchInput'
+export type { SearchInputProps }   from './components/SearchInput/SearchInput'
+
+// Wave 8 — display
+export { Stat }                    from './components/Stat/Stat'
+export type { StatProps }          from './components/Stat/Stat'
+
+export { CommandPalette }          from './components/CommandPalette/CommandPalette'
+export type { CommandPaletteProps, CommandItem } from './components/CommandPalette/CommandPalette'
+
+export { CopyButton }              from './components/CopyButton/CopyButton'
+export type { CopyButtonProps }    from './components/CopyButton/CopyButton'
+
+export { ToggleButton }            from './components/ToggleButton/ToggleButton'
+export type { ToggleButtonProps }  from './components/ToggleButton/ToggleButton'
